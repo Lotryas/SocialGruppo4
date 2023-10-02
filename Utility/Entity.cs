@@ -45,7 +45,7 @@ namespace Utility
                         case "double":
                             valore = double.Parse(riga[proprieta.Name.ToLower()]);
                             break;
-                        case "bool":
+                        case "boolean":
                             valore = bool.Parse(riga[proprieta.Name.ToLower()]);
                             break;
                         case "datetime":
