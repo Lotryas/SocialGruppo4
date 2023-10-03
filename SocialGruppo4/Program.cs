@@ -1,3 +1,8 @@
+// Legge e imposta la stringa di connessione dal file Config.txt.
+string[] lines = File.ReadAllLines("./Config/Config.txt");
+SocialGruppo4.Config.ConnectionString.SetConnectionString(lines[0]);
+// -----------------------------------------------------------------
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

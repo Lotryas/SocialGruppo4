@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.SqlClient;
 
 namespace Utility
 {
@@ -11,13 +6,18 @@ namespace Utility
     {
         public SqlConnection Connection { get; set; }
 
+        public Database(string connectionString)
+        {
+            Connection = new SqlConnection(connectionString);
+        }
+
         public Database(string nomeDB, string server = "LAPTOP-B71E9AKC")
         {
             Connection = new SqlConnection(
-                                            $"Data Source = {server}; " +
-                                            $"Initial Catalog = {nomeDB}; " +
-                                            $"Integrated Security = True;"
-                                           );
+                $"Data Source = {server}; " +
+                $"Initial Catalog = {nomeDB}; " +
+                $"Integrated Security = True;"
+            );
         }
 
         public List<Dictionary<string, string>> Read(string query)
