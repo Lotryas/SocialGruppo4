@@ -42,7 +42,7 @@ create table Posts
 insert into Posts
 (idUtente, idPadre, contenuto, dataEora, miPiace)
 values
-(1, 1, 'Oggi è proprio una bella giornata', '03-10-2023 12:07', 0);
+(1, 1, 'Oggi Ã¨ proprio una bella giornata', '03-10-2023 12:07', 0);
 
 select * from Posts
 
