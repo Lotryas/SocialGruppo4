@@ -35,7 +35,7 @@ namespace SocialGruppo4.Controllers
 
             Response.Cookies.Append("auth", utente.Id.ToString(), cookieOpts);
 
-            return Redirect("/");
+            return RedirectToAction(nameof(Index));
         }
     }
 }
