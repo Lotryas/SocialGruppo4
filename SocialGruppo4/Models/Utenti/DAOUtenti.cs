@@ -1,11 +1,11 @@
 using Utility;
 
-namespace SocialGruppo4.Models
+namespace SocialGruppo4.Models.Utenti
 {
     public class DAOUtenti : IDAO
     {
         private readonly Database db;
-        private static DAOUtenti instance;
+        private static DAOUtenti? instance;
 
         private DAOUtenti()
         {

@@ -1,6 +1,6 @@
 using Utility;
 
-namespace SocialGruppo4.Models
+namespace SocialGruppo4.Models.Utenti
 {
     public class Utente : Entity
     {
