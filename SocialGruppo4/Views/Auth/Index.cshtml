@@ -3,6 +3,10 @@
 }
 
 <section>
+    @if (TempData.ContainsKey("Message"))
+    {
+        <div>@TempData["Message"]?.ToString()</div>
+    }
     <form action="/accedi" method="POST">
         <div class="form-group">
             <label for="email">Email</label>
@@ -16,6 +20,7 @@
             <button type="submit">Accedi</button>
         </div>
     </form>
+
 
     <div class="auth-links">
         <a href="#">Recupera la tua password</a>

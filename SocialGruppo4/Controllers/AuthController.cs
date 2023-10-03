@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using SocialGruppo4.Models.Utenti;
 
 namespace SocialGruppo4.Controllers
 {
@@ -11,10 +12,18 @@ namespace SocialGruppo4.Controllers
         }
 
         [HttpPost("accedi")]
-        public IActionResult Login()
+        public IActionResult OnLogin()
         {
             string email = Request.Form["email"];
             string plainPassword = Request.Form["password"];
+
+            Utente? utente = (Utente?)DAOUtenti.GetInstance().Find(email, plainPassword);
+
+            if (utente is null)
+            {
+                TempData.Add("Message", "La combinazione di Email e Password non è stata riconosciuta.");
+                return RedirectToAction(nameof(Index));
+            }
 
             CookieOptions cookieOpts = new()
             {
@@ -24,7 +33,7 @@ namespace SocialGruppo4.Controllers
                 SameSite = SameSiteMode.Lax
             };
 
-            Response.Cookies.Append("auth", email, cookieOpts);
+            Response.Cookies.Append("auth", utente.Id.ToString(), cookieOpts);
 
             return Redirect("/");
         }

@@ -41,5 +41,21 @@ namespace SocialGruppo4.Models.Utenti
         {
             throw new NotImplementedException();
         }
+
+        public Entity? Find(string email, string plainPassword)
+        {
+            var record = db.ReadOne(@$"
+                SELECT * FROM Utenti
+                WHERE email = '{email}'
+                AND passwordHash = HASHBYTES('SHA2_512', '{plainPassword}');
+            ");
+
+            if (record is null) return null;
+
+            var utente = new Utente();
+            utente.FromDictionary(record);
+
+            return utente;
+        }
     }
 }
