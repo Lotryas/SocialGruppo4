@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Post di {nomeUtente}";
+}
+
+<!-- 
+
+    INCOMPLETO
+    
+    DA FINIRE:
+
+    -styling commenti e risposte ai commenti (potenzialmente fare un css a parte)
+    -markup della risposta ai commenti
+    -collegamento BE
+-->
+
+<section class="post-page-container">
+    <!-- POST -->
+    <div class="post-single-page">
+        <p class="author">John Doe<!-- nome utente --></p>
+        <p><!-- contenuto post-->Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, sapien vel m bibendum, sapien velit bibendum sapien, vel bibendum sapien velit bibendum sapien.</p>
+        <div class="actions">
+            <div>
+                <p class="date"><!-- data post-->10:30 AM - 1 Jan 2022</p>
+            </div>
+            <div class="buttons">
+                <a href="#">Rispondi</a>
+                <a href="#">Like</a>
+            </div>
+        </div>
+    </div>
+    <!-- COMMENTO DI RISPOSTA AL POST-->
+    <div class="post-first-comment">
+        <div class="post-single-page">
+            <p class="author">John Doe<!-- nome utente --></p>
+            <p><!-- contenuto post-->Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, sapien vel bibendum bibendum, sapien velit bibendum sapien, vel bibendum sapien velit bibendum sapien.</p>
+            <div class="actions">
+                <div>
+                    <p class="date"><!-- data post-->10:30 AM - 1 Jan 2022</p>
+                </div>
+                <div class="buttons">
+                    <a href="#">Rispondi</a>
+                    <a href="#">Like</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

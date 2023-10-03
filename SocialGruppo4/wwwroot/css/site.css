@@ -1,22 +1,290 @@
-html {
-  font-size: 14px;
-}
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
 
 body {
-  margin-bottom: 60px;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-label {
-  display: block;
+header {
+    background-color: #1DA1F2;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    /* position: fixed; */
 }
+
+#logo:hover {
+    box-shadow: 0 0 5px rgba(231, 231, 231, 0.849);
+}
+
+.fixed-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #1DA1F2;
+    color: white;
+    padding: 10px;
+    z-index: 1000;
+    justify-content: center;
+}
+
+.fixed-navbar #logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-right: 100px;
+}
+
+.fixed-navbar nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 30%;
+}
+
+.fixed-navbar nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    transition: box-shadow 0.3s ease;
+}
+
+.fixed-navbar nav a:hover {
+    box-shadow: 0 0 5px rgba(231, 231, 231, 0.849);
+}
+
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+
+
+.container-tweet {
+    display: flex;
+    flex-direction: column; /* Imposta la direzione del layout su colonna */
+    align-items: center; /* Allinea il contenuto al centro in orizzontale */
+    justify-content: center; /* Allinea il contenuto al centro in verticale */
+    margin-bottom: 100px;
+}
+
+
+.tweet {
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 30px;
+    width: 600px;
+    border: 1px solid rgba(204, 204, 204, 0.2);
+}
+
+    .tweet p {
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.5;
+        margin-left: 5px;
+    }
+
+    .tweet .author {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .tweet .date {
+        font-size: 14px;
+        color: #657786;
+    }
+
+    .tweet .actions {
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 10px;
+    }
+
+        .tweet .actions a {
+            color: #1DA1F2;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+            .tweet .actions a:hover {
+                text-decoration: underline;
+                box-shadow: 0 0 5px rgba(50, 172, 248, 0.5);
+            }
+
+footer {
+    background-color: #1da1f2;
+    color: white;
+    text-align: center;
+    padding-top: 3px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+/* Stili per la sezione di composizione del tweet */
+
+
+
+.tweet-compose .actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.tweet-compose button[type="submit"] {
+    background-color: #1da1f2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 25px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+    .tweet-compose button[type="submit"]:hover {
+        background-color: #0d91ea;
+        box-shadow: 0 0 25px rgba(50, 172, 248, 0.5);
+    }
+
+
+/* Stili per il campo di input del file e l'etichetta */
+#image-upload {
+    display: none; /* Nasconde il campo di input del file per impostazione predefinita */
+}
+
+.tweet-compose {
+    background-color: white;
+    border-radius: 25px;
+    margin-bottom: 60px;
+    width: 100%;
+    display: block;
+    position: relative;
+}
+
+    .tweet-compose form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 30px;
+        width: 100%;
+    }
+
+    .tweet-compose textarea {
+        width: 95%;
+        /* Altezza del textarea uguale all'altezza del .tweet-compose */
+        height: 150px;
+        border: solid 1px #ccc;
+        border-radius: 20px;
+        border-bottom: 1px solid #ccc;
+        padding: 10px;
+        font-size: 16px;
+        resize: none;
+        margin-bottom: 10px;
+        margin-top: -30px;
+        border: 1px solid rgba(204, 204, 204, 0.3);
+    }
+
+        .tweet-compose textarea:focus {
+            border-color: #2aa5f1; /* Cambia il colore del bordo durante il focus */
+            outline: none; /* Rimuove l'outline di default, se presente */
+            box-shadow: 0 0 25px rgba(50, 172, 248, 0.5);
+        }
+
+
+.image-upload-label {
+    background-color: #1da1f2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 25px;
+    font-size: 16px;
+    margin-right: 50px;
+    transition: background-color 0.3s ease;
+}
+
+    .image-upload-label:hover {
+        background-color: #0d91ea;
+        box-shadow: 0 0 25px rgba(50, 172, 248, 0.5);
+    }
+
+.separatore {
+    height: 60px; /* Aggiungi altezza per creare spazio */
+}
+
+
+/*              
+    POST (qui per poco)
+*/
+
+.post-page-container {
+    padding-right: 5px;
+}
+
+.post-single-page {
+    border-radius: 20px;
+    padding: 10px;
+    padding-right: 10px;
+    margin-bottom: 30px;
+    width: 600px;
+    border: 1px solid rgba(204, 204, 204, 0.2);
+}
+
+    .post-single-page p {
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.2;
+        /* margin-left: 5px; */
+    }
+
+    .post-single-page .author {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .post-single-page .date {
+        font-size: 14px;
+        color: #657786;
+    }
+
+    .post-single-page .actions {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        /*padding-right: 20px;*/
+    }
+
+        .post-single-page .actions .buttons {
+            margin-right: 15px;
+            /*padding-right: 20px;*/
+        }
+
+        .post-single-page .actions a {
+            color: #1DA1F2;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+            .post-single-page .actions a:first-child {
+                margin-right: 10px;
+            }
+
+            .post-single-page .actions a:hover {
+                text-decoration: underline;
+                box-shadow: 0 0 5px rgba(50, 172, 248, 0.5);
+            }
