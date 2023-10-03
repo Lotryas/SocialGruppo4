@@ -35,7 +35,21 @@ namespace SocialGruppo4.Models.Utenti
 
         public bool Insert(Entity e)
         {
-            throw new NotImplementedException();
+            var utente = (Utente)e;
+            return db.Update(@$"
+                INSERT INTO Utenti (
+                    nominativo, amministratore, email, numero,
+                    residenza, codiceFiscale, passwordHash
+                ) VALUES (
+                    '{utente.Nominativo}',
+                    {utente.Amministratore},
+                    '{utente.Email}',
+                    '{utente.Numero}',
+                    '{utente.Residenza}',
+                    '{utente.CodiceFiscale}',
+                    HASHBYTES('SHA2_512', '{utente.PasswordHash}')
+                );
+            ");
         }
 
         public List<Entity> Read()
