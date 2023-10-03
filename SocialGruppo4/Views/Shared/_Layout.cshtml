@@ -14,9 +14,18 @@
         <nav>
             <a asp-controller="Home" asp-action="Index">SOCIAL</a>
             <ul>
-                <li>
-                    <a asp-controller="Auth" asp-action="Index">Accedi</a>
-                </li>
+                @if (ViewBag.User is not null)
+                {
+                    <li>
+                        <a href="#">Profilo</a>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <a asp-controller="Auth" asp-action="Index">Accedi</a>
+                    </li>
+                }
             </ul>
         </nav>
     </header>

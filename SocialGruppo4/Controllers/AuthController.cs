@@ -8,6 +8,10 @@ namespace SocialGruppo4.Controllers
         [HttpGet("accedi")]
         public IActionResult Index()
         {
+            if (HttpContext.Items.ContainsKey("User"))
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
@@ -22,7 +26,7 @@ namespace SocialGruppo4.Controllers
             if (utente is null)
             {
                 TempData.Add("Message", "La combinazione di Email e Password non è stata riconosciuta.");
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index");
             }
 
             CookieOptions cookieOpts = new()
@@ -35,7 +39,7 @@ namespace SocialGruppo4.Controllers
 
             Response.Cookies.Append("auth", utente.Id.ToString(), cookieOpts);
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Home");
         }
     }
 }

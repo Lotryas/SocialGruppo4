@@ -24,7 +24,13 @@ namespace SocialGruppo4.Models.Utenti
 
         public Entity Find(int id)
         {
-            throw new NotImplementedException();
+            var record = db.ReadOne($"SELECT TOP 1 * FROM Utenti WHERE id = {id};");
+            if (record is null) return null;
+
+            var utente = new Utente();
+            utente.FromDictionary(record);
+
+            return utente;
         }
 
         public bool Insert(Entity e)
