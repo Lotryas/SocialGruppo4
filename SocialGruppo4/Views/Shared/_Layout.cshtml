@@ -19,6 +19,12 @@
                     <li>
                         <a href="#">Profilo</a>
                     </li>
+                    @if (ViewBag.User.Amministratore)
+                    {
+                        <li>
+                            <a asp-controller="Auth" asp-action="RegistraDipendente">Registra Dipendente</a>
+                        </li>
+                    }
                 }
                 else
                 {

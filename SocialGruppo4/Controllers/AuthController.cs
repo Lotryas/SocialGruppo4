@@ -8,7 +8,7 @@ namespace SocialGruppo4.Controllers
         [HttpGet("accedi")]
         public IActionResult Index()
         {
-            if (HttpContext.Items.ContainsKey("User"))
+            if (HttpContext.Items["User"] is not null)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -40,6 +40,25 @@ namespace SocialGruppo4.Controllers
             Response.Cookies.Append("auth", utente.Id.ToString(), cookieOpts);
 
             return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet("registra-dipendente")]
+        public IActionResult RegistraDipendente()
+        {
+            var utente = (Utente?)HttpContext.Items["User"];
+
+            if (utente is null)
+                return RedirectToAction("Index");
+            else if (!utente.Amministratore)
+                return RedirectToAction("Index", "Home");
+
+            return View();
+        }
+
+        [HttpPost("registra-dipendente")]
+        public IActionResult OnRegister()
+        {
+            return null;
         }
     }
 }

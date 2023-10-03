@@ -1,4 +1,4 @@
 @{
     Layout = "_Layout";
-    ViewBag.User ??= Context.Items["User"];
+    ViewBag.User = Context.Items["User"] ?? null;
 }
