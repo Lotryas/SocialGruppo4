@@ -25,7 +25,18 @@ namespace SocialGruppo4.Models.Utenti
         public Entity Find(int id)
         {
             var record = db.ReadOne($"SELECT TOP 1 * FROM Utenti WHERE id = {id};");
-            if (record is null) return null;
+            if (record is null) return null!;
+
+            var utente = new Utente();
+            utente.FromDictionary(record);
+
+            return utente;
+        }
+
+        public Entity Find(string email)
+        {
+            var record = db.ReadOne($"SELECT TOP 1 * FROM Utenti WHERE email = {email};");
+            if (record is null) return null!;
 
             var utente = new Utente();
             utente.FromDictionary(record);
@@ -55,12 +66,31 @@ namespace SocialGruppo4.Models.Utenti
 
         public List<Entity> Read()
         {
-            throw new NotImplementedException();
+            List<Entity> utenti = new();
+            var tabella = db.Read("SELECT * FROM Utenti;");
+
+            foreach (var riga in tabella)
+            {
+                Utente utente = new();
+                utente.FromDictionary(riga);
+                utenti.Add(utente);
+            }
+
+            return utenti;
         }
 
         public bool Update(Entity e)
         {
-            throw new NotImplementedException();
+            Utente utente = (Utente)e;
+            return db.Update(@$"
+                UPDATE Utenti SET
+                    nominativo = '{utente.Nominativo}',
+                    email = '{utente.Email}',
+                    numero = '{utente.Numero}',
+                    residenza = '{utente.Residenza}',
+                    codiceFiscale = '{utente.CodiceFiscale}'
+                WHERE id = {utente.Id} 
+            ");
         }
 
         public Entity? Find(string email, string plainPassword)
