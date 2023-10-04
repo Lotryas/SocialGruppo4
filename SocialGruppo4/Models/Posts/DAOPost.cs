@@ -47,7 +47,7 @@ namespace SocialGruppo4.Models.Post
                             $"insert into Posts " +
                             $"(idUtente, idPadre, contenuto, dataEora, miPiace) " +
                             $"values" +
-                            $"('{((Post)e).IdUtente}','{((Post)e).IdPadre}','{((Post)e).Contenuto}','{((Post)e).DataEora}','{((Post)e).MiPiace}'"
+                            $"('{((Post)e).IdUtente}','{((Post)e).IdPadre}','{((Post)e).Contenuto}','{((Post)e).DataEora}','{((Post)e).MiPiace}')"
                             );
         }
 
