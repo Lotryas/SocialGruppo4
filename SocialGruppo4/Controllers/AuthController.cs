@@ -16,14 +16,14 @@ namespace SocialGruppo4.Controllers
         }
 
         [HttpPost("accedi")]
-        public IActionResult Index(FormAccedi formAccedi)
+        public IActionResult Index(FormAccedi form)
         {
             if (!ModelState.IsValid)
             {
                 return View();
             }
 
-            Utente? utente = (Utente?)DAOUtenti.GetInstance().Find(formAccedi.Email!, formAccedi.Password!);
+            Utente? utente = (Utente?)DAOUtenti.GetInstance().Find(form.Email!, form.Password!);
 
             if (utente is null)
             {
@@ -58,9 +58,27 @@ namespace SocialGruppo4.Controllers
         }
 
         [HttpPost("registra-dipendente")]
-        public IActionResult OnRegister()
+        public IActionResult RegistraDipendente(FormRegistraDipendente form)
         {
-            return null;
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            Utente utente = new()
+            {
+                Nominativo = form.Nominativo!,
+                Email = form.Email!,
+                CodiceFiscale = form.CodiceFiscale!,
+                Numero = form.Numero!,
+                Residenza = form.Residenza ?? "",
+                Amministratore = false,
+                PasswordHash = Utente.GetRandomPassword(12)
+            };
+
+            DAOUtenti.GetInstance().Insert(utente);
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

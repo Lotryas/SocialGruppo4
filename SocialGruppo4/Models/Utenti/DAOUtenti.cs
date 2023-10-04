@@ -36,13 +36,14 @@ namespace SocialGruppo4.Models.Utenti
         public bool Insert(Entity e)
         {
             var utente = (Utente)e;
+            int admin = utente.Amministratore ? 1 : 0;
             return db.Update(@$"
                 INSERT INTO Utenti (
                     nominativo, amministratore, email, numero,
                     residenza, codiceFiscale, passwordHash
                 ) VALUES (
                     '{utente.Nominativo}',
-                    {utente.Amministratore},
+                    {admin},
                     '{utente.Email}',
                     '{utente.Numero}',
                     '{utente.Residenza}',
