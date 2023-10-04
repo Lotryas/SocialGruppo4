@@ -24,7 +24,7 @@ namespace SocialGruppo4.Models.Utenti
 
         public Entity Find(int id)
         {
-            var record = db.ReadOne($"SELECT TOP 1 * FROM Utenti WHERE id = {id};");
+            var record = db.ReadOne($"SELECT * FROM Utenti WHERE id = {id};");
             if (record is null) return null!;
 
             var utente = new Utente();
@@ -35,7 +35,7 @@ namespace SocialGruppo4.Models.Utenti
 
         public Entity Find(string email)
         {
-            var record = db.ReadOne($"SELECT TOP 1 * FROM Utenti WHERE email = {email};");
+            var record = db.ReadOne($"SELECT * FROM Utenti WHERE email = '{email}';");
             if (record is null) return null!;
 
             var utente = new Utente();

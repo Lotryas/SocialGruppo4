@@ -1,3 +1,4 @@
+using System.Data.Common;
 using Microsoft.AspNetCore.Mvc;
 using SocialGruppo4.Models.Utenti;
 
@@ -87,6 +88,34 @@ namespace SocialGruppo4.Controllers
         {
             Response.Cookies.Delete("auth");
             return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet("recupera-account")]
+        public IActionResult RecuperaAccount()
+        {
+            return View();
+        }
+
+        [HttpPost("recupera-account")]
+        public IActionResult RecuperaAccount(FormRecuperaAccount form)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            Utente? utente = (Utente?)DAOUtenti.GetInstance().Find(form.Email!);
+
+            if (utente is null)
+            {
+                TempData.Add("Message", $"Utente con email {form.Email!} non trovato.");
+                return RedirectToAction("RecuperaAccount");
+            }
+
+            utente.PasswordHash = form.Password!;
+            DAOUtenti.GetInstance().Update(utente);
+
+            return RedirectToAction("Index");
         }
     }
 }
