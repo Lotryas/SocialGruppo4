@@ -25,6 +25,11 @@
                             <a asp-controller="Auth" asp-action="RegistraDipendente">Registra Dipendente</a>
                         </li>
                     }
+                    <li>
+                        <form asp-controller="Auth" asp-action="Logout" method="POST">
+                            <button type="submit">Logout</button>
+                        </form>
+                    </li>
                 }
                 else
                 {

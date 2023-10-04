@@ -80,5 +80,13 @@ namespace SocialGruppo4.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+
+        [HttpPost("logout")]
+        public IActionResult Logout()
+        {
+            Response.Cookies.Delete("auth");
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
