@@ -89,7 +89,16 @@ namespace SocialGruppo4.Models.Utenti
                     numero = '{utente.Numero}',
                     residenza = '{utente.Residenza}',
                     codiceFiscale = '{utente.CodiceFiscale}'
-                WHERE id = {utente.Id} 
+                WHERE id = {utente.Id};
+            ");
+        }
+
+        public bool UpdatePassword(string email, string password)
+        {
+            return db.Update(@$"
+                UPDATE Utenti SET
+                    passwordHash = HASHBYTES('SHA2_512', '{password}')
+                WHERE email = '{email}';
             ");
         }
 

@@ -112,8 +112,7 @@ namespace SocialGruppo4.Controllers
                 return RedirectToAction("RecuperaAccount");
             }
 
-            utente.PasswordHash = form.Password!;
-            DAOUtenti.GetInstance().Update(utente);
+            DAOUtenti.GetInstance().UpdatePassword(form.Email!, form.Password!);
 
             return RedirectToAction("Index");
         }
