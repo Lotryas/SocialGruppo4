@@ -16,12 +16,14 @@ namespace SocialGruppo4.Controllers
         }
 
         [HttpPost("accedi")]
-        public IActionResult OnLogin()
+        public IActionResult Index(FormAccedi formAccedi)
         {
-            string email = Request.Form["email"];
-            string plainPassword = Request.Form["password"];
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
 
-            Utente? utente = (Utente?)DAOUtenti.GetInstance().Find(email, plainPassword);
+            Utente? utente = (Utente?)DAOUtenti.GetInstance().Find(formAccedi.Email!, formAccedi.Password!);
 
             if (utente is null)
             {

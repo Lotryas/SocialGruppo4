@@ -1,3 +1,7 @@
+:root {
+  --red-600: #dc2626;
+}
+
 html {
   font-size: 14px;
 }
@@ -19,4 +23,14 @@ body {
 
 label {
   display: block;
+}
+
+.input-validation-error {
+  border: 1px solid var(--red-600);
+}
+
+.field-validation-error {
+  display: block;
+  color: var(--red-600);
+  font-size: 0.925rem;
 }
