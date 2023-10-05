@@ -6,7 +6,7 @@ namespace SocialGruppo4.Models.Followers
     {
         private readonly Database db;
 
-        private static DAOFollower instance = null;
+        private static DAOFollower instance = null!;
 
         private DAOFollower()
         {
@@ -30,15 +30,15 @@ namespace SocialGruppo4.Models.Followers
 
         public Entity Find(int id)
         {
-            foreach(Entity e in Read())
+            foreach (Entity e in Read())
             {
-                if(e.Id == id)
+                if (e.Id == id)
                 {
                     return e;
                 }
             }
 
-            return null;
+            return null!;
         }
 
         public bool Insert(Entity e)
@@ -57,7 +57,7 @@ namespace SocialGruppo4.Models.Followers
 
             List<Dictionary<string, string>> righe = db.Read("select * from Followers");
 
-            foreach(Dictionary<string, string> riga in righe)
+            foreach (Dictionary<string, string> riga in righe)
             {
                 Follower f = new Follower();
 

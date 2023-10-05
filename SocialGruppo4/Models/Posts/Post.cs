@@ -6,7 +6,7 @@ namespace SocialGruppo4.Models.Post
     {
         public int IdUtente { get; set; }
         public int IdPadre { get; set; }
-        public string Contenuto { get; set; }
+        public string Contenuto { get; set; } = "";
         public DateTime DataEora { get; set; }
         public int MiPiace { get; set; }
 

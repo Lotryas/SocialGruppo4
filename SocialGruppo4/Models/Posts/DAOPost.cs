@@ -6,7 +6,7 @@ namespace SocialGruppo4.Models.Post
     public class DAOPost : IDAO
     {
         private readonly Database db;
-        private static DAOPost instance = null;
+        private static DAOPost instance = null!;
 
         private DAOPost()
         {
@@ -30,15 +30,15 @@ namespace SocialGruppo4.Models.Post
 
         public Entity Find(int id)
         {
-            foreach(Entity e in Read())
+            foreach (Entity e in Read())
             {
-                if(e.Id == id)
+                if (e.Id == id)
                 {
                     return e;
                 };
             }
 
-            return null;
+            return null!;
         }
 
         public bool Insert(Entity e)
@@ -57,7 +57,7 @@ namespace SocialGruppo4.Models.Post
 
             List<Dictionary<string, string>> righe = db.Read("select * from Posts");
 
-            foreach(Dictionary<string, string> riga in righe)
+            foreach (Dictionary<string, string> riga in righe)
             {
                 Post p = new Post();
 
