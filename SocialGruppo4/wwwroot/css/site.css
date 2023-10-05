@@ -6,6 +6,16 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.flex-grow {
+  flex-grow: 1;
 }
 
 .input-validation-error {
@@ -97,7 +107,7 @@ main {
 .tweet {
   border-radius: 20px;
   padding: 10px;
-  margin-bottom: 30px;
+  margin-top: 30px;
   width: 600px;
   border: 1px solid rgba(204, 204, 204, 0.2);
 }
@@ -309,10 +319,9 @@ footer {
   box-shadow: 0 0 5px rgba(50, 172, 248, 0.5);
 }
 
-.listazioni
-{
+.listazioni {
   display: flex;
-  flex-direction:row;
+  flex-direction: row;
   align-items: center;
   margin-left: 150px;
 }
@@ -322,166 +331,165 @@ footer {
 .registration-form,
 .recovery-form,
 .login-section {
-    background-color: #f5f5f5;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    width: 400px;
-    margin: 0 auto;
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  margin: 0 auto;
 }
 
-    /* Stile per le etichette dei campi all'interno delle classi */
-    .registration-form label,
-    .recovery-form label,
-    .login-section label {
-        font-weight: bold;
-        display: block;
-        margin-bottom: 5px;
-        color: #333;
-    }
+/* Stile per le etichette dei campi all'interno delle classi */
+.registration-form label,
+.recovery-form label,
+.login-section label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
 
-    /* Stile per gli input dei campi all'interno delle classi */
-    .registration-form input[type="text"],
-    .registration-form input[type="email"],
-    .recovery-form input[type="email"],
-    .recovery-form input[type="password"],
-    .login-section input[type="email"],
-    .login-section input[type="password"] {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 10px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-        font-size: 16px;
-        box-sizing: border-box;
-    }
+/* Stile per gli input dei campi all'interno delle classi */
+.registration-form input[type="text"],
+.registration-form input[type="email"],
+.recovery-form input[type="email"],
+.recovery-form input[type="password"],
+.login-section input[type="email"],
+.login-section input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
 
-    /* Stile per i messaggi di validazione all'interno delle classi */
-    .registration-form span,
-    .recovery-form span,
-    .login-section span {
-        color: red;
-        font-size: 14px;
-    }
+/* Stile per i messaggi di validazione all'interno delle classi */
+.registration-form span,
+.recovery-form span,
+.login-section span {
+  color: red;
+  font-size: 14px;
+}
 
-    /* Stile per il pulsante di invio all'interno delle classi */
-    .registration-form button[type="submit"],
-    .recovery-form button[type="submit"],
-    .login-section button[type="submit"] {
-        background-color: #007bff;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
-        font-size: 18px;
-        transition: background-color 0.3s ease;
-    }
+/* Stile per il pulsante di invio all'interno delle classi */
+.registration-form button[type="submit"],
+.recovery-form button[type="submit"],
+.login-section button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
 
-        .registration-form button[type="submit"]:hover,
-        .recovery-form button[type="submit"]:hover,
-        .login-section button[type="submit"]:hover {
-            background-color: #0056b3;
-        }
+.registration-form button[type="submit"]:hover,
+.recovery-form button[type="submit"]:hover,
+.login-section button[type="submit"]:hover {
+  background-color: #0056b3;
+}
 
 
 
 
 
 #logout {
-    font-size: 18px;
-    color: crimson;
-    background-color: ghostwhite;
-    border: none;
-    border-radius: 3px;
-    margin-left: 5px;
+  font-size: 18px;
+  color: crimson;
+  background-color: ghostwhite;
+  border: none;
+  border-radius: 3px;
+  margin-left: 5px;
 }
 
-    #logout:hover
-{
-        color: white;
-        background-color: crimson;
-    }
+#logout:hover {
+  color: white;
+  background-color: crimson;
+}
 
 
-    #recuperaacc {
-        font-size: 18px;
-        color: crimson;
-        background-color: ghostwhite;
-        border: none;
-        border-radius: 3px;
-        margin-left: 5px;
-    }
+#recuperaacc {
+  font-size: 18px;
+  color: crimson;
+  background-color: ghostwhite;
+  border: none;
+  border-radius: 3px;
+  margin-left: 5px;
+}
 
-        #recuperaacc:hover {
-            color: white;
-            background-color: crimson;
-        }
+#recuperaacc:hover {
+  color: white;
+  background-color: crimson;
+}
 
 
-        /* dropdown*/
+/* dropdown*/
 
 /* Stile per il dropdown container */
 .dropdown {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 /* Stile per il pulsante del dropdown */
 .dropbtn {
-   color: rgb(136, 136, 136);
-    padding: 10px 20px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 18px;
-    color: brown;
+  color: rgb(136, 136, 136);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 18px;
+  color: brown;
 }
 
 /* Stile per il contenitore del dropdown menu */
 .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: lightgray;
-    min-width: 160px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    z-index: 1;
+  display: none;
+  position: absolute;
+  background-color: lightgray;
+  min-width: 160px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  z-index: 1;
 }
 
-    /* Stile per gli elementi del dropdown menu */
-    .dropdown-content a {
-        color: #333;
-        padding: 10px 20px;
-        text-decoration: none;
-        display: block;
-        font-size: 16px;
-        
-    }
+/* Stile per gli elementi del dropdown menu */
+.dropdown-content a {
+  color: #333;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
 
-        /* Cambia il colore degli elementi del dropdown al passaggio del mouse */
-        .dropdown-content a:hover {
-            background-color:rgb(50, 172, 248);
-            color: white;
-        }
+}
 
-/* Mostra il dropdown menu quando il pulsante è attivato */
+/* Cambia il colore degli elementi del dropdown al passaggio del mouse */
+.dropdown-content a:hover {
+  background-color: rgb(50, 172, 248);
+  color: white;
+}
+
+/* Mostra il dropdown menu quando il pulsante ï¿½ attivato */
 .dropdown:hover .dropdown-content {
-    display: block;
+  display: block;
 }
 
 /* Stile per il logout button all'interno del dropdown menu */
 .dropdown-content form button {
-    background-color: transparent;
-    color: #333;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 10px 20px;
-    text-align: left;
+  background-color: transparent;
+  color: #333;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+  text-align: left;
 }
 
-    /* Cambia il colore del logout button al passaggio del mouse */
-    .dropdown-content form button:hover {
-        color: #007bff;
-    }
+/* Cambia il colore del logout button al passaggio del mouse */
+.dropdown-content form button:hover {
+  color: #007bff;
+}
