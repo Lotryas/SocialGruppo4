@@ -11,6 +11,11 @@ namespace SocialGruppo4.Controllers
         {
             if (HttpContext.Items["User"] is not null)
             {
+                TempData["FlashMessage"] = new Dictionary<string, string>
+                {
+                    {"Status", "error"},
+                    {"Message", "Hai già effettuato l'accesso"}
+                };
                 return RedirectToAction("Index", "Home");
             }
             return View();
@@ -51,9 +56,23 @@ namespace SocialGruppo4.Controllers
             var utente = (Utente?)HttpContext.Items["User"];
 
             if (utente is null)
+            {
+                TempData["FlashMessage"] = new Dictionary<string, string>
+                {
+                    {"Status", "error"},
+                    {"Message", "Accedi al tuo account per poter visualizzare la pagina."}
+                };
                 return RedirectToAction("Index");
+            }
             else if (!utente.Amministratore)
+            {
+                TempData["FlashMessage"] = new Dictionary<string, string>
+                {
+                    {"Status", "error"},
+                    {"Message", "Non hai i giusti permessi per poter visualizzare la pagina."}
+                };
                 return RedirectToAction("Index", "Home");
+            }
 
             return View();
         }
@@ -77,8 +96,22 @@ namespace SocialGruppo4.Controllers
                 PasswordHash = Utente.GetRandomPassword(12)
             };
 
-            DAOUtenti.GetInstance().Insert(utente);
+            var success = DAOUtenti.GetInstance().Insert(utente);
+            if (!success)
+            {
+                TempData["FlashMessage"] = new Dictionary<string, string>
+                {
+                    {"Status", "error"},
+                    {"Message", "ERRORE: è stato già registrato un dipendente con questi dati."}
+                };
+                return View();
+            }
 
+            TempData["FlashMessage"] = new Dictionary<string, string>
+            {
+                {"Status", "success"},
+                {"Message", $"Il dipendente {utente.Nominativo} è stato registrato con successo!"}
+            };
             return RedirectToAction("Index", "Home");
         }
 

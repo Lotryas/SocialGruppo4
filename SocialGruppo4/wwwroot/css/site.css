@@ -1,8 +1,10 @@
 :root {
   --red-600: #dc2626;
+  --green-600: #16a34a;
 }
 
 body {
+  position: relative;
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -15,6 +17,61 @@ body {
 }
 
 .flex-grow {
+  flex-grow: 1;
+}
+
+.flash-message {
+  position: absolute;
+  display: flex;
+  gap: 1rem;
+  top: 1rem;
+  right: 1rem;
+  width: 20rem;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  z-index: 9000;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.flash-error::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  content: "";
+  height: 1rem;
+  width: 100%;
+  background-color: var(--red-600);
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.flash-success::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  content: "";
+  height: 1rem;
+  width: 100%;
+  background-color: var(--green-600);
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.flash-message button {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  background-color: transparent;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+  cursor: pointer;
+}
+
+.flash-message p {
+  padding: 0;
+  margin: 0;
+  margin-top: 1rem;
   flex-grow: 1;
 }
 
