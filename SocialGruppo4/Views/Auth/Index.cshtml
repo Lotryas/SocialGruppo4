@@ -10,7 +10,7 @@
         <div>@TempData["Message"]?.ToString()</div>
     }
 
-    <form asp-action="Index" method="POST">
+    <form class="login-section" asp-action="Index" method="POST">
         <div class="form-group">
             <label asp-for="Email">Email</label>
             <input asp-for="Email" type="email">
@@ -27,6 +27,6 @@
     </form>
 
     <div class="auth-links">
-        <a asp-action="RecuperaAccount">Recupera Account</a>
+        <a id="recuperaacc" asp-action="RecuperaAccount">Recupera Account</a>
     </div>
 </section>

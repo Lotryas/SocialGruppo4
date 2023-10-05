@@ -34,6 +34,8 @@ header {
 
 .fixed-navbar {
   position: fixed;
+  display: flex;
+  height: auto;
   top: 0;
   left: 0;
   right: 0;
@@ -141,10 +143,11 @@ footer {
   color: white;
   text-align: center;
   padding-top: 3px 0;
-  position: fixed;
+  position: relative;
   bottom: 0;
   left: 0;
   right: 0;
+  margin-top: 150px;
 }
 
 /* Stili per la sezione di composizione del tweet */
@@ -305,3 +308,180 @@ footer {
   text-decoration: underline;
   box-shadow: 0 0 5px rgba(50, 172, 248, 0.5);
 }
+
+.listazioni
+{
+  display: flex;
+  flex-direction:row;
+  align-items: center;
+  margin-left: 150px;
+}
+
+
+/* Stile comune per tutte e tre le classi */
+.registration-form,
+.recovery-form,
+.login-section {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    margin: 0 auto;
+}
+
+    /* Stile per le etichette dei campi all'interno delle classi */
+    .registration-form label,
+    .recovery-form label,
+    .login-section label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+        color: #333;
+    }
+
+    /* Stile per gli input dei campi all'interno delle classi */
+    .registration-form input[type="text"],
+    .registration-form input[type="email"],
+    .recovery-form input[type="email"],
+    .recovery-form input[type="password"],
+    .login-section input[type="email"],
+    .login-section input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+
+    /* Stile per i messaggi di validazione all'interno delle classi */
+    .registration-form span,
+    .recovery-form span,
+    .login-section span {
+        color: red;
+        font-size: 14px;
+    }
+
+    /* Stile per il pulsante di invio all'interno delle classi */
+    .registration-form button[type="submit"],
+    .recovery-form button[type="submit"],
+    .login-section button[type="submit"] {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 18px;
+        transition: background-color 0.3s ease;
+    }
+
+        .registration-form button[type="submit"]:hover,
+        .recovery-form button[type="submit"]:hover,
+        .login-section button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+
+
+
+
+#logout {
+    font-size: 18px;
+    color: crimson;
+    background-color: ghostwhite;
+    border: none;
+    border-radius: 3px;
+    margin-left: 5px;
+}
+
+    #logout:hover
+{
+        color: white;
+        background-color: crimson;
+    }
+
+
+    #recuperaacc {
+        font-size: 18px;
+        color: crimson;
+        background-color: ghostwhite;
+        border: none;
+        border-radius: 3px;
+        margin-left: 5px;
+    }
+
+        #recuperaacc:hover {
+            color: white;
+            background-color: crimson;
+        }
+
+
+        /* dropdown*/
+
+/* Stile per il dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Stile per il pulsante del dropdown */
+.dropbtn {
+   color: rgb(136, 136, 136);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 18px;
+    color: brown;
+}
+
+/* Stile per il contenitore del dropdown menu */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: lightgray;
+    min-width: 160px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 1;
+}
+
+    /* Stile per gli elementi del dropdown menu */
+    .dropdown-content a {
+        color: #333;
+        padding: 10px 20px;
+        text-decoration: none;
+        display: block;
+        font-size: 16px;
+        
+    }
+
+        /* Cambia il colore degli elementi del dropdown al passaggio del mouse */
+        .dropdown-content a:hover {
+            background-color:rgb(50, 172, 248);
+            color: white;
+        }
+
+/* Mostra il dropdown menu quando il pulsante è attivato */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Stile per il logout button all'interno del dropdown menu */
+.dropdown-content form button {
+    background-color: transparent;
+    color: #333;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 20px;
+    text-align: left;
+}
+
+    /* Cambia il colore del logout button al passaggio del mouse */
+    .dropdown-content form button:hover {
+        color: #007bff;
+    }

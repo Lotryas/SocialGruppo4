@@ -10,7 +10,7 @@
         <div>@TempData["Message"]?.ToString()</div>
     }
 
-    <form asp-action="RecuperaAccount" method="POST">
+    <form class="recovery-form" asp-action="RecuperaAccount" method="POST">
         <div class="form-group">
             <label asp-for="Email">Email</label>
             <input asp-for="Email" type="email">
