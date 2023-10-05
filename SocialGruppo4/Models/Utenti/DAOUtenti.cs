@@ -58,7 +58,7 @@ namespace SocialGruppo4.Models.Utenti
                     '{utente.Email}',
                     '{utente.Numero}',
                     '{utente.Residenza}',
-                    '{utente.CodiceFiscale}',
+                    '{utente.CodiceFiscale.ToUpper()}',
                     HASHBYTES('SHA2_512', '{utente.PasswordHash}')
                 );
             ");
@@ -88,7 +88,7 @@ namespace SocialGruppo4.Models.Utenti
                     email = '{utente.Email}',
                     numero = '{utente.Numero}',
                     residenza = '{utente.Residenza}',
-                    codiceFiscale = '{utente.CodiceFiscale}'
+                    codiceFiscale = '{utente.CodiceFiscale.ToUpper()}'
                 WHERE id = {utente.Id};
             ");
         }

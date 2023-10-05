@@ -18,6 +18,10 @@ namespace SocialGruppo4.Models.Utenti
         public string? Residenza { get; set; } = "";
 
         [Required(ErrorMessage = "Il campo Codice Fiscale è richiesto")]
+        [RegularExpression(
+            "^[A-Za-z]{6}[0-9]{2}[A-Za-z]{1}[0-9]{2}[A-Za-z]{1}[0-9]{3}[A-Za-z]{1}$",
+            ErrorMessage = "Il Codice Fiscale non è valido"
+        )]
         public string? CodiceFiscale { get; set; } = "";
     }
 }
