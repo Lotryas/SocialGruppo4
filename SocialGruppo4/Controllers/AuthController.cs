@@ -1,4 +1,3 @@
-using System.Data.Common;
 using Microsoft.AspNetCore.Mvc;
 using SocialGruppo4.Models.Utenti;
 
@@ -6,6 +5,9 @@ namespace SocialGruppo4.Controllers
 {
     public class AuthController : Controller
     {
+        // DOC: Vista per visualizzare la pagina di Login.
+        // Se l'utente ha già effettuato l'accesso viene reindirizzato
+        // alla pagina Home.
         [HttpGet("accedi")]
         public IActionResult Index()
         {
@@ -21,6 +23,13 @@ namespace SocialGruppo4.Controllers
             return View();
         }
 
+        // DOC: Metodo POST che risponde al submit della form di Login.
+        // Riceve come parametro il modello usato nella vista Login e
+        // controlla che non ci siano errori di validazioni come dichiarato
+        // nel modello FormAccedi.
+        // Quando l'utente inserisce l'email e la password corretta, viene
+        // salvato il cookie di autenticazione nella Response da restituire.
+        // Altrimenti, riceve il messaggio di errore.
         [HttpPost("accedi")]
         public IActionResult Index(FormAccedi form)
         {
@@ -50,6 +59,10 @@ namespace SocialGruppo4.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        // DOC: Vista della pagina di registrazione di un nuovo dipendente.
+        // Il metodo fa particolare attenzione a controllare che l'utente
+        // sia loggato e che abbia l'autorizzazione per poter inserire nuovi
+        // utenti sulla piattaforma.
         [HttpGet("registra-dipendente")]
         public IActionResult RegistraDipendente()
         {
@@ -77,6 +90,11 @@ namespace SocialGruppo4.Controllers
             return View();
         }
 
+        // DOC: Metodo POST per la registrazione di un nuovo dipendente.
+        // Come parametro riceve il modello con le annotazioni di validazione
+        // per controllare che i dati della form siano corretti.
+        // Se alcuni dati (email, numero o codice fiscale) sono già presenti in
+        // database, l'amministrazione riceve un errore.
         [HttpPost("registra-dipendente")]
         public IActionResult RegistraDipendente(FormRegistraDipendente form)
         {
@@ -116,6 +134,8 @@ namespace SocialGruppo4.Controllers
         }
 
 
+        // DOC: Questo metodo effettua il logout dell'utente tramite
+        // l'eliminazione del cookie di autenticazione creato in precedenza.
         [HttpPost("logout")]
         public IActionResult Logout()
         {
@@ -123,12 +143,20 @@ namespace SocialGruppo4.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        // DOC: Vista della pagina del recupero account di un utente.
+        // Ovviamente non è usabile una cosa del genere in production,
+        // ma per semplicità abbiamo optato per questa soluzione.
         [HttpGet("recupera-account")]
         public IActionResult RecuperaAccount()
         {
             return View();
         }
 
+        // DOC: Metodo POST della form di recupero account.
+        // Il modello ricevuto come parametro contiene alcune annotazioni
+        // di base per la validazione. Tramite l'inserimento di un email
+        // è possibile reimpostare la password, ridando l'accesso
+        // all'utente.
         [HttpPost("recupera-account")]
         public IActionResult RecuperaAccount(FormRecuperaAccount form)
         {
