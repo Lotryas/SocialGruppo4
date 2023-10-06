@@ -553,3 +553,45 @@ footer {
 .dropdown-content form button:hover {
   color: #007bff;
 }
+
+
+
+/* ~/css/utenti.css */
+
+/* Stile per il titolo */
+h1 {
+    text-align: center;
+    color: #1da1f2; /* Blu Twitter */
+}
+
+/* Stile per la lista ul */
+ul.elenco-utenti {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Stile per gli elementi li */
+li.utente {
+    margin-bottom: 20px; /* Aggiunge spazio tra gli elementi */
+    padding: 10px;
+    border: 1px solid #e1e8ed; /* Blu Twitter più chiaro */
+    background-color: #ffffff; /* Bianco */
+    transition: background-color 0.3s ease; /* Aggiunge una transizione durante l'hover */
+}
+
+    /* Stile per gli elementi li quando passano sopra */
+    li.utente:hover {
+        background-color: #f5f8fa; /* Blu Twitter ancora più chiaro durante l'hover */
+    }
+
+/* Stile per il nome dell'utente */
+div.nome {
+    font-weight: bold;
+    color: #1da1f2; /* Blu Twitter */
+}
+
+/* Stile per l'email dell'utente */
+div.email {
+    color: #333; /* Nero */
+}
+
