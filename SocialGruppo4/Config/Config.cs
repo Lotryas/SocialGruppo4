@@ -10,9 +10,6 @@ namespace SocialGruppo4.Config
                 Windows: Data Source=DESKTOP-9GDQRUC;Initial Catalog=NomeDatabase;Integrated Security=True;
                 Linux: Server=localhost;Database=NomeDatabase;User Id=sa;Password=SQLServerDevPassword!;
          */
-        public static void SetConnectionString(string connectionString)
-        {
-            Value = connectionString;
-        }
+        public static void SetConnectionString(string connectionString) => Value = connectionString;
     }
 }

@@ -1,0 +1,32 @@
+@model SocialGruppo4.Models.Utenti.FormAccedi
+
+@{
+    ViewData["Title"] = "Accedi";
+}
+
+<section>
+    @if (TempData.ContainsKey("Message"))
+    {
+        <div>@TempData["Message"]?.ToString()</div>
+    }
+
+    <form class="login-section" asp-action="Index" method="POST">
+        <div class="form-group">
+            <label asp-for="Email">Email</label>
+            <input asp-for="Email" type="email">
+            <span asp-validation-for="Email"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password">Password</label>
+            <input asp-for="Password" type="password">
+            <span asp-validation-for="Password"></span>
+        </div>
+        <div class="form-buttons">
+            <button type="submit">Accedi</button>
+        </div>
+    </form>
+
+    <div class="auth-links">
+        <a id="recuperaacc" asp-action="RecuperaAccount">Recupera Account</a>
+    </div>
+</section>

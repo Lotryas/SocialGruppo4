@@ -1,0 +1,19 @@
+﻿@using SocialGruppo4.Models.Utenti;
+@model List<Utente>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/utenti.css">
+</head>
+
+<body>
+    <h1>Lista Utenti:</h1>
+    <ul class="elenco-utenti">
+        @foreach (var utente in Model)
+        {
+            <li class="utente">
+                <div class="nome">@utente.Nominativo</div>
+                <div class="email">@utente.Email</div>
+            </li>
+        }
+    </ul>
+</body>

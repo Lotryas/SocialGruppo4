@@ -2,7 +2,58 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<div clas="container-tweet">
+    <div class="tweet-compose">
+        <form enctype="multipart/form-data">
+            <textarea placeholder="A cosa stai pensando?"></textarea>
+            <div class="button-container">
+                <label for="image-upload" class="image-upload-label">Carica Immagine</label>
+                <button type="submit">Posta</button>
+            </div>
+            <input type="file" accept="image/*" id="image-upload" />
+        </form>
+    </div>
+    <section class="post-container">
+        <div class="tweet">
+            <p class="author">John Doe</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, sapien vel bibendum bibendum,
+                sapien velit bibendum sapien, vel bibendum sapien velit bibendum sapien.</p>
+            <p class="date">10:30 AM - 1 Jan 2022</p>
+            <div class="actions">
+                <a href="#">Rispondi</a>
+                <a href="#">Like</a>
+            </div>
+        </div>
+        <div class="tweet">
+            <p class="author">Jane Smith</p>
+            <p>Nullam quis risus eget urna mollis ornare vel eu leo. Donec id elit non mi porta gravida at eget metus.
+                Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            <p class="date">9:15 AM - 1 Jan 2022</p>
+            <div class="actions">
+                <a href="#">Rispondi</a>
+                <a href="#">Like</a>
+            </div>
+        </div>
+        <div class="tweet">
+            <p class="author">Jane Smith</p>
+            <p>Nullam quis risus eget urna mollis ornare vel eu leo. Donec id elit non mi porta gravida at eget metus.
+                Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            <p class="date">9:15 AM - 1 Jan 2022</p>
+            <div class="actions">
+                <a href="#">Rispondi</a>
+                <a href="#">Like</a>
+            </div>
+        </div>
+        <div class="tweet">
+            <p class="author">Jane Smith</p>
+            <p>Nullam quis risus eget urna mollis ornare vel eu leo. Donec id elit non mi porta gravida at eget metus.
+                Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            <p class="date">9:15 AM - 1 Jan 2022</p>
+            <div class="actions">
+                <a href="#">Rispondi</a>
+                <a href="#">Like</a>
+            </div>
+        </div>
+    </section>
 </div>

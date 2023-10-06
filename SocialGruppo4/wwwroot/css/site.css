@@ -1,18 +1,597 @@
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+:root {
+  --red-600: #dc2626;
+  --green-600: #16a34a;
 }
 
 body {
-  margin-bottom: 60px;
+  position: relative;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
 }
+
+.h-full {
+  height: 100%;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.flash-message {
+  position: absolute;
+  display: flex;
+  gap: 1rem;
+  top: 1rem;
+  right: 1rem;
+  width: 20rem;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  z-index: 9000;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.flash-error::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  content: "";
+  height: 1rem;
+  width: 100%;
+  background-color: var(--red-600);
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.flash-success::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  content: "";
+  height: 1rem;
+  width: 100%;
+  background-color: var(--green-600);
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.flash-message button {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  background-color: transparent;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+  cursor: pointer;
+}
+
+.flash-message p {
+  padding: 0;
+  margin: 0;
+  margin-top: 1rem;
+  flex-grow: 1;
+}
+
+.input-validation-error {
+  border: 1px solid var(--red-600);
+}
+
+.field-validation-error {
+  display: block;
+  color: var(--red-600);
+  font-size: 0.925rem;
+}
+
+header {
+  background-color: #1DA1F2;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  /* position: fixed; */
+}
+
+#logo:hover {
+  box-shadow: 0 0 5px rgba(231, 231, 231, 0.849);
+  text-decoration: none;
+}
+
+.fixed-navbar {
+  position: fixed;
+  display: flex;
+  height: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #1DA1F2;
+  color: white;
+  padding: 10px;
+  z-index: 1000;
+  justify-content: center;
+}
+
+.fixed-navbar #logo {
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 20px;
+  margin-right: 100px;
+  color: white;
+  text-decoration: none;
+}
+
+.fixed-navbar nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 30%;
+}
+
+.fixed-navbar nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px;
+  transition: box-shadow 0.3s ease;
+}
+
+.fixed-navbar nav a:hover {
+  box-shadow: 0 0 5px rgba(231, 231, 231, 0.849);
+}
+
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+
+.container-tweet {
+  display: flex;
+  flex-direction: column;
+  /* Imposta la direzione del layout su colonna */
+  align-items: center;
+  /* Allinea il contenuto al centro in orizzontale */
+  justify-content: center;
+  /* Allinea il contenuto al centro in verticale */
+  margin-bottom: 100px;
+}
+
+
+.tweet {
+  border-radius: 20px;
+  padding: 10px;
+  margin-top: 30px;
+  width: 600px;
+  border: 1px solid rgba(204, 204, 204, 0.2);
+}
+
+.tweet p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.5;
+  margin-left: 5px;
+}
+
+.tweet .author {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.tweet .date {
+  font-size: 14px;
+  color: #657786;
+}
+
+.tweet .actions {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10px;
+}
+
+.tweet .actions a {
+  color: #1DA1F2;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.tweet .actions a:hover {
+  text-decoration: underline;
+  box-shadow: 0 0 5px rgba(50, 172, 248, 0.5);
+}
+
+footer {
+  background-color: #1da1f2;
+  color: white;
+  text-align: center;
+  padding-top: 3px 0;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-top: 150px;
+}
+
+/* Stili per la sezione di composizione del tweet */
+
+.tweet-compose .actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.tweet-compose button[type="submit"] {
+  background-color: #1da1f2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 25px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.tweet-compose button[type="submit"]:hover {
+  background-color: #0d91ea;
+  box-shadow: 0 0 25px rgba(50, 172, 248, 0.5);
+}
+
+
+/* Stili per il campo di input del file e l'etichetta */
+#image-upload {
+  display: none;
+  /* Nasconde il campo di input del file per impostazione predefinita */
+}
+
+.tweet-compose {
+  background-color: white;
+  border-radius: 25px;
+  margin-bottom: 60px;
+  width: 100%;
+  display: block;
+  position: relative;
+}
+
+.tweet-compose form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.tweet-compose textarea {
+  width: 95%;
+  /* Altezza del textarea uguale all'altezza del .tweet-compose */
+  height: 150px;
+  border: solid 1px #ccc;
+  border-radius: 20px;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+  font-size: 16px;
+  resize: none;
+  margin-bottom: 10px;
+  margin-top: -30px;
+  border: 1px solid rgba(204, 204, 204, 0.3);
+}
+
+.tweet-compose textarea:focus {
+  border-color: #2aa5f1;
+  /* Cambia il colore del bordo durante il focus */
+  outline: none;
+  /* Rimuove l'outline di default, se presente */
+  box-shadow: 0 0 25px rgba(50, 172, 248, 0.5);
+}
+
+
+.image-upload-label {
+  background-color: #1da1f2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 25px;
+  font-size: 16px;
+  margin-right: 50px;
+  transition: background-color 0.3s ease;
+}
+
+.image-upload-label:hover {
+  background-color: #0d91ea;
+  box-shadow: 0 0 25px rgba(50, 172, 248, 0.5);
+}
+
+.separatore {
+  height: 60px;
+  /* Aggiungi altezza per creare spazio */
+}
+
+
+/*              
+    POST (qui per poco)
+*/
+
+.post-page-container {
+  padding-right: 5px;
+}
+
+.post-single-page {
+  border-radius: 20px;
+  padding: 10px;
+  padding-right: 10px;
+  margin-bottom: 30px;
+  width: 600px;
+  border: 1px solid rgba(204, 204, 204, 0.2);
+}
+
+.post-single-page p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.2;
+  /* margin-left: 5px; */
+}
+
+.post-single-page .author {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.post-single-page .date {
+  font-size: 14px;
+  color: #657786;
+}
+
+.post-single-page .actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  /*padding-right: 20px;*/
+}
+
+.post-single-page .actions .buttons {
+  margin-right: 15px;
+  /*padding-right: 20px;*/
+}
+
+.post-single-page .actions a {
+  color: #1DA1F2;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.post-single-page .actions a:first-child {
+  margin-right: 10px;
+}
+
+.post-single-page .actions a:hover {
+  text-decoration: underline;
+  box-shadow: 0 0 5px rgba(50, 172, 248, 0.5);
+}
+
+.listazioni {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 150px;
+}
+
+
+/* Stile comune per tutte e tre le classi */
+.registration-form,
+.recovery-form,
+.login-section {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  margin: 0 auto;
+}
+
+/* Stile per le etichette dei campi all'interno delle classi */
+.registration-form label,
+.recovery-form label,
+.login-section label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/* Stile per gli input dei campi all'interno delle classi */
+.registration-form input[type="text"],
+.registration-form input[type="email"],
+.recovery-form input[type="email"],
+.recovery-form input[type="password"],
+.login-section input[type="email"],
+.login-section input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+/* Stile per i messaggi di validazione all'interno delle classi */
+.registration-form span,
+.recovery-form span,
+.login-section span {
+  color: red;
+  font-size: 14px;
+}
+
+/* Stile per il pulsante di invio all'interno delle classi */
+.registration-form button[type="submit"],
+.recovery-form button[type="submit"],
+.login-section button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+.registration-form button[type="submit"]:hover,
+.recovery-form button[type="submit"]:hover,
+.login-section button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+
+
+
+
+#logout {
+  font-size: 18px;
+  color: crimson;
+  background-color: ghostwhite;
+  border: none;
+  border-radius: 3px;
+  margin-left: 5px;
+}
+
+#logout:hover {
+  color: white;
+  background-color: crimson;
+}
+
+
+#recuperaacc {
+  font-size: 18px;
+  color: crimson;
+  background-color: ghostwhite;
+  border: none;
+  border-radius: 3px;
+  margin-left: 5px;
+}
+
+#recuperaacc:hover {
+  color: white;
+  background-color: crimson;
+}
+
+
+/* dropdown*/
+
+/* Stile per il dropdown container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Stile per il pulsante del dropdown */
+.dropbtn {
+  color: rgb(136, 136, 136);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 18px;
+  color: brown;
+}
+
+/* Stile per il contenitore del dropdown menu */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: lightgray;
+  min-width: 160px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  z-index: 1;
+}
+
+/* Stile per gli elementi del dropdown menu */
+.dropdown-content a {
+  color: #333;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+
+}
+
+/* Cambia il colore degli elementi del dropdown al passaggio del mouse */
+.dropdown-content a:hover {
+  background-color: rgb(50, 172, 248);
+  color: white;
+}
+
+/* Mostra il dropdown menu quando il pulsante � attivato */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Stile per il logout button all'interno del dropdown menu */
+.dropdown-content form button {
+  background-color: transparent;
+  color: #333;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+  text-align: left;
+}
+
+/* Cambia il colore del logout button al passaggio del mouse */
+.dropdown-content form button:hover {
+  color: #007bff;
+}
+
+
+
+/* ~/css/utenti.css */
+
+/* Stile per il titolo */
+h1 {
+    text-align: center;
+    color: #1da1f2; /* Blu Twitter */
+}
+
+/* Stile per la lista ul */
+ul.elenco-utenti {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Stile per gli elementi li */
+li.utente {
+    margin-bottom: 20px; /* Aggiunge spazio tra gli elementi */
+    padding: 10px;
+    border: 1px solid #e1e8ed; /* Blu Twitter più chiaro */
+    background-color: #ffffff; /* Bianco */
+    transition: background-color 0.3s ease; /* Aggiunge una transizione durante l'hover */
+}
+
+    /* Stile per gli elementi li quando passano sopra */
+    li.utente:hover {
+        background-color: #f5f8fa; /* Blu Twitter ancora più chiaro durante l'hover */
+    }
+
+/* Stile per il nome dell'utente */
+div.nome {
+    font-weight: bold;
+    color: #1da1f2; /* Blu Twitter */
+}
+
+/* Stile per l'email dell'utente */
+div.email {
+    color: #333; /* Nero */
+}
+

@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="it" class="h-full">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SocialGruppo4</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body class="h-full">
+    <header class="fixed-navbar">
+        <a id="logo" asp-controller="Home" asp-action="Index">Social</a>
+        <nav>
+            <a asp-controller="Home" asp-action="Index">Home</a>
+            <a href="Utenti/ElencoUtenti">Utenti</a>
+            <a href="#">Notifiche</a>
+            <a href="#">Messaggi</a>
+            <div class="dropdown">
+                <button class="dropbtn">Menu</button>
+                <div class="dropdown-content">
+                    @if (ViewBag.User is not null)
+                    {
+                        <a href="#">Profilo</a>
+                        @if (ViewBag.User.Amministratore)
+                        {
+                            <a asp-controller="Auth" asp-action="RegistraDipendente">Registra Dipendente</a>
+                        }
+                        <form asp-controller="Auth" asp-action="Logout" method="POST">
+                            <button id="logout" type="submit">Logout</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <a asp-controller="Auth" asp-action="Index">Accedi</a>
+                    }
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="separatore"></div>
+
+    <main class="flex-grow">
+        @RenderBody()
+    </main>
+
+    <footer>
+        Progetto Social - Gruppo 4
+    </footer>
+
+    @if (TempData.ContainsKey("FlashMessage"))
+    {
+        var fm = TempData["FlashMessage"] as Dictionary<string, string>;
+        string status = @fm?["Status"]!;
+        string message = @fm?["Message"]!;
+        <div class="flash-message flash-@status">
+            <p>@message</p>
+            <button type="button" onclick="closeFlashMessage(event)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                    <path fill-rule="evenodd"
+                        d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z"
+                        clip-rule="evenodd" />
+                </svg>
+            </button>
+        </div>
+    }
+
+    <script src=" ~/js/site.js" asp-append-version="true">
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

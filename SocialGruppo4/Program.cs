@@ -1,4 +1,6 @@
 // Legge e imposta la stringa di connessione dal file Config.txt.
+using SocialGruppo4.Middleware;
+
 string[] lines = File.ReadAllLines("./Config/Config.txt");
 SocialGruppo4.Config.ConnectionString.SetConnectionString(lines[0]);
 // -----------------------------------------------------------------
@@ -20,6 +22,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+app.UseAuthMiddleware();
 
 app.UseRouting();
 

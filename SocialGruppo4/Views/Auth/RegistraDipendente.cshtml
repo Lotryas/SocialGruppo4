@@ -1,0 +1,38 @@
+@model SocialGruppo4.Models.Utenti.FormRegistraDipendente
+
+@{
+    ViewData["Title"] = "Registra Dipendente";
+}
+
+<section>
+    <form class="registration-form" asp-action="RegistraDipendente" method="POST">
+        <div class="form-group">
+            <label asp-for="Nominativo">Nominativo</label>
+            <input asp-for="Nominativo" type="text">
+            <span asp-validation-for="Nominativo"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CodiceFiscale">Codice Fiscale</label>
+            <input asp-for="CodiceFiscale" type="text">
+            <span asp-validation-for="CodiceFiscale"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Numero">Cellulare</label>
+            <input asp-for="Numero" type="text">
+            <span asp-validation-for="Numero"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Residenza">Residenza</label>
+            <input asp-for="Residenza" type="text">
+            <span asp-validation-for="Residenza"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email">Email</label>
+            <input asp-for="Email" type="email">
+            <span asp-validation-for="Email"></span>
+        </div>
+        <div class="form-buttons">
+            <button type="submit">Registra Dipendente</button>
+        </div>
+    </form>
+</section>

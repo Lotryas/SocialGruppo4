@@ -1,0 +1,33 @@
+@model SocialGruppo4.Models.Utenti.FormRecuperaAccount
+
+@{
+    ViewData["Title"] = "Recupera Account";
+}
+
+<section>
+    @if (TempData.ContainsKey("Message"))
+    {
+        <div>@TempData["Message"]?.ToString()</div>
+    }
+
+    <form class="recovery-form" asp-action="RecuperaAccount" method="POST">
+        <div class="form-group">
+            <label asp-for="Email">Email</label>
+            <input asp-for="Email" type="email">
+            <span asp-validation-for="Email"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password">Nuova Password</label>
+            <input asp-for="Password" type="password">
+            <span asp-validation-for="Password"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ConfermaPassword">Conferma Password</label>
+            <input asp-for="ConfermaPassword" type="password">
+            <span asp-validation-for="ConfermaPassword"></span>
+        </div>
+        <div class="form-buttons">
+            <button type="submit">Recupera Account</button>
+        </div>
+    </form>
+</section>

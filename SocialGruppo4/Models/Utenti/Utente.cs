@@ -1,6 +1,7 @@
+using System.Text;
 using Utility;
 
-namespace SocialGruppo4.Models
+namespace SocialGruppo4.Models.Utenti
 {
     public class Utente : Entity
     {
@@ -26,6 +27,21 @@ namespace SocialGruppo4.Models
             Residenza = residenza;
             CodiceFiscale = codiceFiscale;
             PasswordHash = passwordHash;
+        }
+
+        public static string GetRandomPassword(int length)
+        {
+            const string chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            Random rnd = new();
+            string password = "";
+
+            for (int i = 0; i < length; i++)
+            {
+                int j = rnd.Next(chars.Length);
+                password += chars[j];
+            }
+
+            return password;
         }
     }
 }
