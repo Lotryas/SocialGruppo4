@@ -1,6 +1,15 @@
 :root {
   --red-600: #dc2626;
   --green-600: #16a34a;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  --twitter: #1da1f2;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -10,6 +19,11 @@ body {
   padding: 0;
   display: flex;
   flex-direction: column;
+}
+
+.container {
+  max-width: 64rem;
+  margin: 0 auto;
 }
 
 .h-full {
@@ -218,6 +232,69 @@ footer {
   left: 0;
   right: 0;
   margin-top: 150px;
+}
+
+.home-container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+}
+
+.home-utenti {
+  width: 15rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.btn-secondary {
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 9999px;
+  background-color: white;
+  color: var(--gray-800);
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 150ms ease-in-out;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  border: 1px solid var(--twitter);
+  background-color: var(--twitter);
+  color: white;
+}
+
+.home-card-utente {
+  margin-top: 1.5rem;
+}
+
+.home-card-utente h3 {
+  color: var(--gray-900);
+}
+
+.link {
+  color: var(--twitter);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.text-right {
+  text-align: right;
 }
 
 /* Stili per la sezione di composizione del tweet */
@@ -560,38 +637,45 @@ footer {
 
 /* Stile per il titolo */
 h1 {
-    text-align: center;
-    color: #1da1f2; /* Blu Twitter */
+  text-align: center;
+  color: #1da1f2;
+  /* Blu Twitter */
 }
 
 /* Stile per la lista ul */
 ul.elenco-utenti {
-    list-style-type: none;
-    padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
 /* Stile per gli elementi li */
 li.utente {
-    margin-bottom: 20px; /* Aggiunge spazio tra gli elementi */
-    padding: 10px;
-    border: 1px solid #e1e8ed; /* Blu Twitter più chiaro */
-    background-color: #ffffff; /* Bianco */
-    transition: background-color 0.3s ease; /* Aggiunge una transizione durante l'hover */
+  margin-bottom: 20px;
+  /* Aggiunge spazio tra gli elementi */
+  padding: 10px;
+  border: 1px solid #e1e8ed;
+  /* Blu Twitter più chiaro */
+  background-color: #ffffff;
+  /* Bianco */
+  transition: background-color 0.3s ease;
+  /* Aggiunge una transizione durante l'hover */
 }
 
-    /* Stile per gli elementi li quando passano sopra */
-    li.utente:hover {
-        background-color: #f5f8fa; /* Blu Twitter ancora più chiaro durante l'hover */
-    }
+/* Stile per gli elementi li quando passano sopra */
+li.utente:hover {
+  background-color: #f5f8fa;
+  /* Blu Twitter ancora più chiaro durante l'hover */
+}
 
 /* Stile per il nome dell'utente */
 div.nome {
-    font-weight: bold;
-    color: #1da1f2; /* Blu Twitter */
+  font-weight: bold;
+  color: #1da1f2;
+  /* Blu Twitter */
 }
 
 /* Stile per l'email dell'utente */
 div.email {
-    color: #333; /* Nero */
+  color: #333;
+  /* Nero */
 }
-

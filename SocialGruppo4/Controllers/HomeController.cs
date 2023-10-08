@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using SocialGruppo4.Models;
+using SocialGruppo4.Models.Utenti;
 
 namespace SocialGruppo4.Controllers;
 
@@ -15,6 +16,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        ViewBag.Utenti = DAOUtenti.GetInstance().Read();
         return View();
     }
 
