@@ -117,5 +117,20 @@ namespace SocialGruppo4.Models.Utenti
 
             return utente;
         }
+
+        public List<Entity> Latest(int n)
+        {
+            List<Entity> utenti = new();
+            var tabella = db.Read($"SELECT TOP {n} * FROM Utenti;");
+
+            foreach (var riga in tabella)
+            {
+                Utente utente = new();
+                utente.FromDictionary(riga);
+                utenti.Add(utente);
+            }
+
+            return utenti;
+        }
     }
 }

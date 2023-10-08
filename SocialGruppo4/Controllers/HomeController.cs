@@ -16,7 +16,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        ViewBag.Utenti = DAOUtenti.GetInstance().Read();
+        ViewBag.Utenti = DAOUtenti.GetInstance().Latest(6);
         return View();
     }
 
