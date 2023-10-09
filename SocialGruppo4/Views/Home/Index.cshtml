@@ -69,7 +69,7 @@
             {
                 <div class="home-card-utente">
                     <h3 class="mb-2">@utente.Nominativo</h3>
-                    <form asp-action="Follow" asp-controller="Utenti" method="POST">
+                    <form asp-controller="Utenti" asp-action="Follow" asp-route-id="@utente.Id" method="POST">
                         <button type="submit" class="btn-secondary w-full">Segui</button>
                     </form>
                 </div>
