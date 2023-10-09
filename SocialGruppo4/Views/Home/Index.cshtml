@@ -62,21 +62,24 @@
             </div>
         </div>
     </section>
-    <section class="home-utenti">
-        <h2>Potresti conoscere</h2>
-        <div class="mt-4">
-            @foreach (Utente utente in ViewBag.Utenti)
-            {
-                <div class="home-card-utente">
-                    <h3 class="mb-2">@utente.Nominativo</h3>
-                    <form asp-controller="Utenti" asp-action="Follow" asp-route-id="@utente.Id" method="POST">
-                        <button type="submit" class="btn-secondary w-full">Segui</button>
-                    </form>
-                </div>
-            }
-        </div>
-        <div class="mt-4 text-right">
-            <a asp-action="ElencoUtenti" asp-controller="Utenti" class="link">MOSTRA TUTTI</a>
-        </div>
-    </section>
+    @if (ViewBag.User is not null && ViewBag.Utenti.Count > 0)
+    {
+        <section class="home-utenti">
+            <h2>Potresti conoscere</h2>
+            <div class="mt-4">
+                @foreach (Utente utente in ViewBag.Utenti)
+                {
+                    <div class="home-card-utente">
+                        <h3 class="mb-2">@utente.Nominativo</h3>
+                        <form asp-controller="Utenti" asp-action="Follow" asp-route-id="@utente.Id" method="POST">
+                            <button type="submit" class="btn-secondary w-full">Segui</button>
+                        </form>
+                    </div>
+                }
+            </div>
+            <div class="mt-4 text-right">
+                <a asp-action="ElencoUtenti" asp-controller="Utenti" class="link">MOSTRA TUTTI</a>
+            </div>
+        </section>
+    }
 </div>

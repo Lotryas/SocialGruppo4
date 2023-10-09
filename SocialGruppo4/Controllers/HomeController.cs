@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SocialGruppo4.Models;
 using SocialGruppo4.Models.Utenti;
+using Utility;
 
 namespace SocialGruppo4.Controllers;
 
@@ -16,7 +17,11 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        ViewBag.Utenti = DAOUtenti.GetInstance().Latest(6);
+        Entity? utente = (Entity?)HttpContext.Items["User"];
+        if (utente is not null)
+        {
+            ViewBag.Utenti = DAOUtenti.GetInstance().LatestToFollow(limit: 6, idUtente: utente.Id);
+        }
         return View();
     }
 
