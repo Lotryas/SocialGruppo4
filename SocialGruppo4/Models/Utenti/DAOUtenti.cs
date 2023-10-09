@@ -121,7 +121,7 @@ namespace SocialGruppo4.Models.Utenti
         public List<Entity> Latest(int n)
         {
             List<Entity> utenti = new();
-            var tabella = db.Read($"SELECT TOP {n} * FROM Utenti;");
+            var tabella = db.Read($"SELECT TOP {n} * FROM Utenti ORDER BY id DESC;");
 
             foreach (var riga in tabella)
             {
