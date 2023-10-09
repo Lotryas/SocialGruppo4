@@ -10,7 +10,7 @@ namespace SocialGruppo4.Models.Post
 
         private DAOPost()
         {
-            db = new Database("ProjectWork");
+            db = new Database(Config.ConnectionString.Value);
         }
 
         public static DAOPost getInstance()

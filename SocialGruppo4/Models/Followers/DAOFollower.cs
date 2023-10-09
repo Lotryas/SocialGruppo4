@@ -10,7 +10,7 @@ namespace SocialGruppo4.Models.Followers
 
         private DAOFollower()
         {
-            db = new Database("ProjectWork");
+            db = new Database(Config.ConnectionString.Value);
         }
 
         public static DAOFollower getInstance()
