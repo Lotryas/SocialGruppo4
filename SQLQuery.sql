@@ -45,7 +45,9 @@ create table Posts
 );
 
 insert into Posts (idUtente, idPadre, contenuto, dataEora, miPiace, immagine)
-values (1, 1, 'Oggi è proprio una bella giornata', '03-10-2023 12:07', 0, NULL);
+values
+	(1, NULL, 'Oggi è proprio una bella giornata', '03-10-2023 12:07', 0, NULL),
+	(2, 1, 'Questo è un commento al primo post', '11-10-2023 14:19', 3, '');
 
 select * from Posts
 
