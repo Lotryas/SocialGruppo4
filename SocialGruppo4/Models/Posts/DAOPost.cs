@@ -1,5 +1,4 @@
-﻿using SocialGruppo4.Models.Utenti;
-using Utility;
+﻿using Utility;
 
 namespace SocialGruppo4.Models.Post
 {
