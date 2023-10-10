@@ -22,7 +22,7 @@
                 <div class="dropdown-content">
                     @if (ViewBag.User is not null)
                     {
-                        <a href="#">Profilo</a>
+                        <a asp-controller="Profilo" asp-action="Index">Profilo</a>
                         @if (ViewBag.User.Amministratore)
                         {
                             <a asp-controller="Auth" asp-action="RegistraDipendente">Registra Dipendente</a>
