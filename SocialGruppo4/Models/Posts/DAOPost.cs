@@ -15,17 +15,12 @@ namespace SocialGruppo4.Models.Post
 
         public static DAOPost GetInstance()
         {
-            if (instance == null)
-            {
-                instance = new DAOPost();
-            }
-
-            return instance;
+            return instance ??= new DAOPost();
         }
 
         public bool Delete(int id)
         {
-            return db.Update($"delete from Posts where id = {id}");
+            return db.Update($"delete from Posts where id = {id};");
         }
 
         public Entity Find(int id)
@@ -43,26 +38,31 @@ namespace SocialGruppo4.Models.Post
 
         public bool Insert(Entity e)
         {
-            return db.Update(
-                            $"insert into Posts " +
-                            $"(idUtente, idPadre, contenuto, dataEora, miPiace) " +
-                            $"values" +
-                            $"('{((Post)e).IdUtente}','{((Post)e).IdPadre}','{((Post)e).Contenuto}','{((Post)e).DataEora}','{((Post)e).MiPiace}')"
-                            );
+            Post p = (Post)e;
+            string idPadre = p.IdPadre?.ToString() ?? "NULL";
+            return db.Update(@$"
+                INSERT INTO Posts (idUtente, idPadre, contenuto, dataEora, miPiace, immagine)
+                VALUES (
+                    {p.IdUtente},
+                    {idPadre},
+                    '{Entity.PulisciApici(p.Contenuto)}',
+                    '{p.DataEora}',
+                    {p.MiPiace},
+                    '{p.Immagine}'
+                );
+            ");
         }
 
         public List<Entity> Read()
         {
-            List<Entity> ris = new List<Entity>();
+            List<Entity> ris = new();
 
-            List<Dictionary<string, string>> righe = db.Read("select * from Posts");
+            List<Dictionary<string, string>> righe = db.Read("select * from Posts;");
 
             foreach (Dictionary<string, string> riga in righe)
             {
-                Post p = new Post();
-
+                Post p = new();
                 p.FromDictionary(riga);
-
                 ris.Add(p);
             }
 
@@ -71,14 +71,34 @@ namespace SocialGruppo4.Models.Post
 
         public bool Update(Entity e)
         {
-            return db.Update(
-                            $"update Posts set " +
-                            $"idUtente = '{((Post)e).IdUtente}', " +
-                            $"idPadre = '{((Post)e).IdPadre}', " +
-                            $"contenuto = {((Post)e).Contenuto}', " +
-                            $"dataEora = {((Post)e).DataEora}', " +
-                            $"miPiace = {((Post)e).MiPiace}"
-                            );
+            Post p = (Post)e;
+            return db.Update(@$"
+                UPDATE Posts SET
+                    idUtente = {p.IdUtente},
+                    idPadre = {p.IdPadre},
+                    contenuto = '{Entity.PulisciApici(p.Contenuto)}',
+                    dataEora = '{p.DataEora}',
+                    miPiace = {p.MiPiace},
+                    immagine = '{p.Immagine}'
+                WHERE id = {p.Id};
+            ");
+        }
+
+        public List<Entity> Latest()
+        {
+            List<Entity> ris = new();
+
+            List<Dictionary<string, string>> righe = db.Read("SELECT * FROM Posts ORDER BY id DESC;");
+
+            foreach (Dictionary<string, string> riga in righe)
+            {
+                Post p = new();
+                p.FromDictionary(riga);
+                p.Utente = (Utente?)DAOUtenti.GetInstance().Find(p.IdUtente);
+                ris.Add(p);
+            }
+
+            return ris;
         }
     }
 }
