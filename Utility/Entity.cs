@@ -57,5 +57,10 @@ namespace Utility
                 }
             }
         }
+
+        public static string PulisciApici(string s)
+        {
+            return s.Replace("'", "''");
+        }
     }
 }

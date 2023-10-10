@@ -45,7 +45,7 @@ namespace SocialGruppo4.Models.Post
                 VALUES (
                     {p.IdUtente},
                     {idPadre},
-                    '{p.Contenuto}',
+                    '{Entity.PulisciApici(p.Contenuto)}',
                     '{p.DataEora}',
                     {p.MiPiace},
                     '{p.Immagine}'
@@ -76,7 +76,7 @@ namespace SocialGruppo4.Models.Post
                 UPDATE Posts SET
                     idUtente = {p.IdUtente},
                     idPadre = {p.IdPadre},
-                    contenuto = '{p.Contenuto}',
+                    contenuto = '{Entity.PulisciApici(p.Contenuto)}',
                     dataEora = '{p.DataEora}',
                     miPiace = {p.MiPiace},
                     immagine = '{p.Immagine}'
