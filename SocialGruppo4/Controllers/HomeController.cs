@@ -1,5 +1,4 @@
-﻿using System.Data.Common;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using SocialGruppo4.Models;
 using SocialGruppo4.Models.Post;
