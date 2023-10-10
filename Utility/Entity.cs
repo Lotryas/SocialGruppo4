@@ -35,7 +35,7 @@ namespace Utility
             {
                 if (riga.ContainsKey(proprieta.Name.ToLower()))
                 {
-                    object valore = riga[proprieta.Name.ToLower()];
+                    object valore = "";
 
                     switch (proprieta.PropertyType.Name.ToLower())
                     {
@@ -50,6 +50,9 @@ namespace Utility
                             break;
                         case "datetime":
                             valore = DateTime.Parse(riga[proprieta.Name.ToLower()]);
+                            break;
+                        case "string":
+                            valore = riga[proprieta.Name.ToLower()];
                             break;
                         default:
                             valore = null!;
