@@ -4,6 +4,7 @@
   --gray-800: #1f2937;
   --gray-900: #111827;
   --twitter: #1da1f2;
+  --twitter-dark: #007bff;
 }
 
 * {
@@ -165,19 +166,6 @@ main {
   margin-top: 100px;
 }
 
-
-.container-tweet {
-  display: flex;
-  flex-direction: column;
-  /* Imposta la direzione del layout su colonna */
-  align-items: center;
-  /* Allinea il contenuto al centro in orizzontale */
-  justify-content: center;
-  /* Allinea il contenuto al centro in verticale */
-  margin-bottom: 100px;
-}
-
-
 .tweet {
   border-radius: 20px;
   padding: 10px;
@@ -244,6 +232,10 @@ footer {
   width: 15rem;
 }
 
+.hidden {
+  display: none;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -297,99 +289,55 @@ footer {
   text-align: right;
 }
 
-/* Stili per la sezione di composizione del tweet */
-
-.tweet-compose .actions {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.tweet-compose button[type="submit"] {
-  background-color: #1da1f2;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 25px;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
-.tweet-compose button[type="submit"]:hover {
-  background-color: #0d91ea;
-  box-shadow: 0 0 25px rgba(50, 172, 248, 0.5);
-}
-
-
-/* Stili per il campo di input del file e l'etichetta */
-#image-upload {
-  display: none;
-  /* Nasconde il campo di input del file per impostazione predefinita */
-}
-
-.tweet-compose {
-  background-color: white;
-  border-radius: 25px;
-  margin-bottom: 60px;
-  width: 100%;
-  display: block;
-  position: relative;
-}
-
-.tweet-compose form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 30px;
-  width: 100%;
-}
-
-.tweet-compose textarea {
-  width: 95%;
-  /* Altezza del textarea uguale all'altezza del .tweet-compose */
-  height: 150px;
-  border: solid 1px #ccc;
-  border-radius: 20px;
-  border-bottom: 1px solid #ccc;
-  padding: 10px;
-  font-size: 16px;
-  resize: none;
-  margin-bottom: 10px;
-  margin-top: -30px;
-  border: 1px solid rgba(204, 204, 204, 0.3);
-}
-
-.tweet-compose textarea:focus {
-  border-color: #2aa5f1;
-  /* Cambia il colore del bordo durante il focus */
-  outline: none;
-  /* Rimuove l'outline di default, se presente */
-  box-shadow: 0 0 25px rgba(50, 172, 248, 0.5);
-}
-
-
-.image-upload-label {
-  background-color: #1da1f2;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 25px;
-  font-size: 16px;
-  margin-right: 50px;
-  transition: background-color 0.3s ease;
-}
-
-.image-upload-label:hover {
-  background-color: #0d91ea;
-  box-shadow: 0 0 25px rgba(50, 172, 248, 0.5);
-}
-
 .separatore {
   height: 60px;
   /* Aggiungi altezza per creare spazio */
+}
+
+.icon-primary {
+  color: var(--twitter);
+  cursor: pointer;
+  transition: all 150ms ease-in-out;
+}
+
+.icon-primary:hover {
+  color: var(--twitter-dark);
+}
+
+.btn-primary {
+  background-color: var(--twitter);
+  color: white;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 150ms ease-in-out;
+}
+
+.btn-primary:hover {
+  background-color: var(--twitter-dark);
+}
+
+.post-form-textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 1rem;
+  font-size: 1rem;
+}
+
+.post-form-textarea:focus-visible {
+  outline: 2px solid var(--twitter);
+}
+
+.post-form-buttons {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 1rem;
 }
 
 
@@ -688,153 +636,153 @@ div.email {
 */
 
 .post-page-container {
-    padding: 0;
-    border: 2px solid purple;
-    border-radius: 10px;
-    width: 60vw;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: end;
+  padding: 0;
+  border: 2px solid purple;
+  border-radius: 10px;
+  width: 60vw;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
 }
 
-    .post-page-container .post-single-page {
-        margin: 0;
-        width: 100%;
-        background-color: rgba(216, 132, 132, 0.2);
-    }
+.post-page-container .post-single-page {
+  margin: 0;
+  width: 100%;
+  background-color: rgba(216, 132, 132, 0.2);
+}
 
-    .post-page-container .post-content {
-        width: 100%;
-        padding: 5px;
-    }
+.post-page-container .post-content {
+  width: 100%;
+  padding: 5px;
+}
 
-    .post-page-container .post-single-page .content {
-        width: 95%;
-        font-size: 200%;
-        line-height: 1.2;
-    }
+.post-page-container .post-single-page .content {
+  width: 95%;
+  font-size: 200%;
+  line-height: 1.2;
+}
 
-    .post-page-container .post-single-page .post-content {
-        padding: 10px;
-    }
+.post-page-container .post-single-page .post-content {
+  padding: 10px;
+}
 
-    .post-page-container .post-single-page .author {
-        font-size: 150%;
-        font-weight: bold;
-        margin-bottom: 10px;
-        margin-top: 5px;
-    }
+.post-page-container .post-single-page .author {
+  font-size: 150%;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
 
-    .post-page-container .post-single-page .date {
-        font-size: 20px;
-    }
+.post-page-container .post-single-page .date {
+  font-size: 20px;
+}
 
-    .post-page-container .post-single-page .buttons {
-        margin-right: 20px;
-    }
+.post-page-container .post-single-page .buttons {
+  margin-right: 20px;
+}
 
-    .post-page-container .actions {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 10px;
-        padding: 0;
-    }
+.post-page-container .actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding: 0;
+}
 
-    .post-page-container .buttons {
-        padding: 0;
-        height: 100%;
-        margin-right: 10px;
-    }
+.post-page-container .buttons {
+  padding: 0;
+  height: 100%;
+  margin-right: 10px;
+}
 
-        .post-page-container .buttons a {
-            margin-left: 30px;
-            color: #1DA1F2;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: bold;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-        }
+.post-page-container .buttons a {
+  margin-left: 30px;
+  color: #1DA1F2;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
 
-            .post-page-container .buttons a:last-child {
-                margin-right: 10px;
-            }
+.post-page-container .buttons a:last-child {
+  margin-right: 10px;
+}
 
-            .post-page-container .buttons a:hover {
-                text-decoration: underline;
-                box-shadow: 0 0 5px rgba(50, 172, 248, 0.5);
-            }
+.post-page-container .buttons a:hover {
+  text-decoration: underline;
+  box-shadow: 0 0 5px rgba(50, 172, 248, 0.5);
+}
 
-    .post-page-container .post-first-comment {
-        background-color: rgba(71, 173, 204, 0.2);
-        padding: 4px 10px;
-        margin-bottom: 5px;
-        font-size: 120%;
-        border-radius: 7px;
-        width: 98%;
-    }
+.post-page-container .post-first-comment {
+  background-color: rgba(71, 173, 204, 0.2);
+  padding: 4px 10px;
+  margin-bottom: 5px;
+  font-size: 120%;
+  border-radius: 7px;
+  width: 98%;
+}
 
-    .post-page-container .post-first-comment-answer {
-        background-color: rgba(14, 121, 46, 0.2);
-        padding: 4px 10px;
-        font-size: 120%;
-        border-radius: 7px;
-        width: 90%;
-        margin-bottom: 5px;
-    }
+.post-page-container .post-first-comment-answer {
+  background-color: rgba(14, 121, 46, 0.2);
+  padding: 4px 10px;
+  font-size: 120%;
+  border-radius: 7px;
+  width: 90%;
+  margin-bottom: 5px;
+}
 
-        .post-page-container .post-first-comment-answer:last-child {
-            margin-bottom: 0;
-        }
+.post-page-container .post-first-comment-answer:last-child {
+  margin-bottom: 0;
+}
 
-    .post-page-container .author {
-        font-weight: bold;
-        text-transform: uppercase;
-        margin: 7.5px 0;
-    }
+.post-page-container .author {
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 7.5px 0;
+}
 
-    .post-page-container .content {
-        margin: 0;
-        line-height: 1.2;
-    }
+.post-page-container .content {
+  margin: 0;
+  line-height: 1.2;
+}
 
-    .post-page-container .date {
-        color: #657786;
-        margin: 10px 0;
-    }
+.post-page-container .date {
+  color: #657786;
+  margin: 10px 0;
+}
 
-    .post-page-container .comments {
-        width: 90%;
-        border: 1px solid brown;
-        float: right;
-        padding-bottom: 10px;
-        display: flex;
-        flex-direction: column;
-        align-items: end;
-    }
+.post-page-container .comments {
+  width: 90%;
+  border: 1px solid brown;
+  float: right;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
 
-    .post-page-container .comments-thread {
-        margin-top: 15px;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: end;
-        width: 100%;
-    }
+.post-page-container .comments-thread {
+  margin-top: 15px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  width: 100%;
+}
 
-    .post-page-container .comments .date {
-        font-size: 14px;
-    }
+.post-page-container .comments .date {
+  font-size: 14px;
+}
 
-    .post-page-container .comments .actions {
-        padding: 0;
-    }
+.post-page-container .comments .actions {
+  padding: 0;
+}
 
-    .post-page-container .reference {
-        margin: 5px 25px 5px 0;
-        border-bottom: 1px solid red;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
+.post-page-container .reference {
+  margin: 5px 25px 5px 0;
+  border-bottom: 1px solid red;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

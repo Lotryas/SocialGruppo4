@@ -152,7 +152,6 @@ namespace SocialGruppo4.Models.Utenti
             {
                 Utente utente = new();
                 utente.FromDictionary(riga);
-                Console.WriteLine(utente.Nominativo);
                 utenti.Add(utente);
             }
 

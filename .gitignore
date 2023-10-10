@@ -1,5 +1,11 @@
 Config.txt
 
+wwwroot/images/**/*.jpg
+wwwroot/images/**/*.jpeg
+wwwroot/images/**/*.png
+wwwroot/images/**/*.gif
+wwwroot/images/**/*.webp
+
 # User-specific files
 *.rsuser
 *.suo

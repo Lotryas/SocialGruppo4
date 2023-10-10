@@ -11,6 +11,9 @@ create table Utenti
 	numero varchar(100) unique,
 	residenza varchar(100),
 	codiceFiscale varchar(100) unique,
+	sezione varchar(100),
+	team varchar(100),
+	descrizione varchar(200),
 	passwordHash varchar(64)
 );
 
