@@ -1,4 +1,5 @@
-﻿using Utility;
+﻿using SocialGruppo4.Models.Utenti;
+using Utility;
 
 namespace SocialGruppo4.Models.Post
 {
@@ -81,6 +82,23 @@ namespace SocialGruppo4.Models.Post
                     immagine = '{p.Immagine}'
                 WHERE id = {p.Id};
             ");
+        }
+
+        public List<Entity> Latest()
+        {
+            List<Entity> ris = new();
+
+            List<Dictionary<string, string>> righe = db.Read("SELECT * FROM Posts ORDER BY id DESC;");
+
+            foreach (Dictionary<string, string> riga in righe)
+            {
+                Post p = new();
+                p.FromDictionary(riga);
+                p.Utente = (Utente?)DAOUtenti.GetInstance().Find(p.IdUtente);
+                ris.Add(p);
+            }
+
+            return ris;
         }
     }
 }
