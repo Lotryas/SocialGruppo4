@@ -13,7 +13,7 @@ namespace SocialGruppo4.Models.Post
             db = new Database(Config.ConnectionString.Value);
         }
 
-        public static DAOPost getInstance()
+        public static DAOPost GetInstance()
         {
             if (instance == null)
             {
