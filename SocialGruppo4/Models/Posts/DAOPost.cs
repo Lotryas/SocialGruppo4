@@ -39,11 +39,12 @@ namespace SocialGruppo4.Models.Post
         public bool Insert(Entity e)
         {
             Post p = (Post)e;
+            string idPadre = p.IdPadre?.ToString() ?? "NULL";
             return db.Update(@$"
                 INSERT INTO Posts (idUtente, idPadre, contenuto, dataEora, miPiace, immagine)
                 VALUES (
                     {p.IdUtente},
-                    {p.IdPadre},
+                    {idPadre},
                     '{p.Contenuto}',
                     '{p.DataEora}',
                     {p.MiPiace},
