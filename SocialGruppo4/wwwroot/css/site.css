@@ -1,6 +1,7 @@
 :root {
   --red-600: #dc2626;
   --green-600: #16a34a;
+  --gray-600: #4b5563;
   --gray-800: #1f2937;
   --gray-900: #111827;
   --twitter: #1da1f2;
@@ -8,7 +9,7 @@
 }
 
 * {
-  box-sizing: border-box;
+  box-sizing: border-box !important;
   margin: 0;
   padding: 0;
 }
@@ -21,6 +22,25 @@ body {
   display: flex;
   flex-direction: column;
   background-color: white;
+}
+
+main {
+  margin-top: 3rem;
+  width: 100%;
+}
+
+.home-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  width: 100%;
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home-utenti {
+  width: 15rem;
 }
 
 .container {
@@ -101,12 +121,6 @@ body {
   font-size: 0.925rem;
 }
 
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 2rem;
-}
 
 .navbar {
   padding: 0.5rem 1rem;
@@ -160,66 +174,77 @@ main {
   font-weight: 700;
 }
 
+.post-container {
+  width: 100%;
+  margin-top: 3rem;
+}
+
 .tweet {
   border-radius: 20px;
-  padding: 10px;
+  padding: 1rem;
   margin-top: 30px;
-  width: 600px;
+  width: 100%;
   border: 1px solid rgba(0, 0, 0, 0.15);
   background-color: white;
+}
+
+.tweet-header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
 }
 
 .tweet p {
   margin: 0;
   font-size: 18px;
   line-height: 1.5;
-  margin-left: 5px;
 }
 
 .tweet .author {
   font-weight: bold;
-  margin-bottom: 10px;
+  color: var(--gray-800);
 }
 
 .tweet .date {
-  font-size: 14px;
-  color: #657786;
+  font-size: 13px;
+  color: var(--gray-600);
 }
 
 .tweet .actions {
   display: flex;
-  justify-content: space-evenly;
-  margin-top: 10px;
+  justify-content: end;
+  gap: 1rem;
+  margin-top: 0.5rem;
 }
 
-.tweet .actions a {
-  color: #1DA1F2;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: bold;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+.tweet .actions button {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
-.tweet .actions a:hover {
-  text-decoration: underline;
-  box-shadow: 0 0 5px rgba(50, 172, 248, 0.5);
+.tweet .like-empty {
+  color: var(--gray-800);
+}
+
+.tweet .like-empty:hover {
+  color: #dc2626;
+}
+
+.tweet .action-container {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 footer {
   background-color: #eeeeee;
   color: #444444;
   padding: 2rem 1rem;
-  margin-top: 3rem;
-}
-
-.home-container {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 2rem;
-}
-
-.home-utenti {
-  width: 15rem;
+  margin-top: 4rem;
 }
 
 .hidden {
@@ -437,7 +462,6 @@ footer {
   border: 1px solid #ccc;
   border-radius: 3px;
   font-size: 16px;
-  box-sizing: border-box;
 }
 
 /* Stile per i messaggi di validazione all'interno delle classi */
