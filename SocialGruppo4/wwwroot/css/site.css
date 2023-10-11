@@ -100,70 +100,63 @@ body {
   font-size: 0.925rem;
 }
 
-header {
-  background-color: #1DA1F2;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  /* position: fixed; */
-}
-
-#logo:hover {
-  box-shadow: 0 0 5px rgba(231, 231, 231, 0.849);
-  text-decoration: none;
-}
-
-.fixed-navbar {
-  position: fixed;
-  display: flex;
-  height: auto;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: #1DA1F2;
-  color: white;
-  padding: 10px;
-  z-index: 1000;
-  justify-content: center;
-}
-
-.fixed-navbar #logo {
-  font-size: 24px;
-  font-weight: bold;
-  margin-left: 20px;
-  margin-right: 100px;
-  color: white;
-  text-decoration: none;
-}
-
-.fixed-navbar nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 30%;
-}
-
-.fixed-navbar nav a {
-  color: white;
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: bold;
-  padding: 10px;
-  transition: box-shadow 0.3s ease;
-}
-
-.fixed-navbar nav a:hover {
-  box-shadow: 0 0 5px rgba(231, 231, 231, 0.849);
-}
-
-
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 100px;
+  margin-top: 2rem;
+}
+
+.navbar {
+  padding: 0.5rem 1rem;
+  background-color: var(--twitter);
+  color: white;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.navbar nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  width: 100%;
+}
+
+.navbar-items {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar-items a,
+.navbar-item {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.4rem 1rem;
+  background-color: transparent;
+  border-radius: 5px;
+  transition: all 100ms ease-in-out;
+}
+
+.navbar-items a:hover,
+.navbar-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.navbar #logo {
+  text-decoration: none;
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
 }
 
 .tweet {
@@ -479,24 +472,6 @@ footer {
 }
 
 
-
-
-
-#logout {
-  font-size: 18px;
-  color: crimson;
-  background-color: ghostwhite;
-  border: none;
-  border-radius: 3px;
-  margin-left: 5px;
-}
-
-#logout:hover {
-  color: white;
-  background-color: crimson;
-}
-
-
 #recuperaacc {
   font-size: 18px;
   color: crimson;
@@ -522,39 +497,49 @@ footer {
 
 /* Stile per il pulsante del dropdown */
 .dropbtn {
-  color: rgb(136, 136, 136);
-  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  color: white;
   border: none;
   border-radius: 3px;
   cursor: pointer;
-  font-size: 18px;
-  color: brown;
+  background-color: transparent;
+  padding: 0.4rem;
+  transition: all 100ms ease-in-out;
+}
+
+.dropbtn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Stile per il contenitore del dropdown menu */
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: lightgray;
-  min-width: 160px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  right: 0;
+  min-width: 210px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   z-index: 1;
+  background-color: white;
 }
 
 /* Stile per gli elementi del dropdown menu */
-.dropdown-content a {
-  color: #333;
+.dropdown-item {
+  color: #222222;
   padding: 10px 20px;
   text-decoration: none;
   display: block;
-  font-size: 16px;
-
+  font-size: 1rem !important;
+  font-weight: 400;
+  border-radius: 5px;
+  width: 100%;
+  margin: 0 !important;
 }
 
 /* Cambia il colore degli elementi del dropdown al passaggio del mouse */
 .dropdown-content a:hover {
-  background-color: rgb(50, 172, 248);
+  background-color: var(--twitter);
   color: white;
 }
 
@@ -566,20 +551,18 @@ footer {
 /* Stile per il logout button all'interno del dropdown menu */
 .dropdown-content form button {
   background-color: transparent;
-  color: #333;
   border: none;
   cursor: pointer;
-  font-size: 16px;
   padding: 10px 20px;
   text-align: left;
+  font-weight: 400;
+  color: #dc2626;
 }
 
-/* Cambia il colore del logout button al passaggio del mouse */
 .dropdown-content form button:hover {
-  color: #007bff;
+  background-color: #dc2626;
+  color: white;
 }
-
-
 
 /* ~/css/utenti.css */
 
