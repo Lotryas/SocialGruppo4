@@ -3,6 +3,7 @@ create database ProjectWork
 use projectWork
 
 DROP TABLE Followers;
+DROP TABLE Likes;
 DROP TABLE Posts;
 DROP TABLE Utenti;
 
@@ -48,9 +49,24 @@ insert into Posts (idUtente, idPadre, contenuto, dataEora, miPiace, immagine)
 values
 	(1, NULL, 'Oggi è proprio una bella giornata', '03-10-2023 12:07', 0, NULL),
 	(2, 1, 'Questo è un commento al primo post', '11-10-2023 14:19', 3, ''),
-	(2, NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', '11-10-2023 14:19', 14, '');
+	(2, NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', '11-10-2023 14:19', 14, ''),
+	(3, 3, 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '11-10-2023 15:31', 2, NULL),
+	(4, NULL, 'Ultricies lacus sed turpis tincidunt id aliquet risus feugiat. Nisi lacus sed viverra tellus in hac habitasse platea. Vel pharetra vel turpis nunc eget lorem dolor sed viverra.', '11-10-2023 16:54', 9, NULL),
+	(5, NULL, 'Risus quis varius quam quisque. Nisl pretium fusce id velit. Dolor morbi non arcu risus quis. Fames ac turpis egestas maecenas pharetra convallis posuere.', '11-10-2023 17:04', 0, NULL);
 
 select * from Posts
+
+CREATE TABLE Likes (
+	idUtente INT,
+	idPost INT,
+	
+	PRIMARY KEY (idUtente, idPost),
+	FOREIGN KEY (idUtente) REFERENCES Utenti(id),
+	FOREIGN KEY (idPost) REFERENCES Posts(id)
+);
+
+INSERT INTO Likes (idUtente, idPost)
+VALUES (2, 1), (2, 4), (2, 5);
 
 create table Followers
 (
