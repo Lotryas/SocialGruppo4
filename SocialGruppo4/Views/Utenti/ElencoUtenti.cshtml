@@ -1,11 +1,8 @@
 ﻿@using SocialGruppo4.Models.Utenti;
+
 @model List<Utente>
 
-<head>
-    <link rel="stylesheet" type="text/css" href="~/css/utenti.css">
-</head>
-
-<body>
+<section>
     <h1>Lista Utenti:</h1>
     <ul class="elenco-utenti">
         @foreach (var utente in Model)
@@ -16,4 +13,4 @@
             </li>
         }
     </ul>
-</body>
+</section>
