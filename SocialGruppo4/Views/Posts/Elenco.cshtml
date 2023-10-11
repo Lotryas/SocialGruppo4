@@ -1,4 +1,7 @@
-﻿@{
+﻿@using SocialGruppo4.Models
+@using SocialGruppo4.Models.Post;
+@model List<Utility.Entity>
+@{
     ViewData["Title"] = "Post di {nomeUtente}";
 }
 
@@ -11,27 +14,33 @@
 
 <section class="post-page-container">
     <!-- POST -->
-    <div class="post-single-page">
-        <div class="post-content">
-            <!-- nome utente (con link al profilo) -->
-            <p class="author">John Doe</p>
-            <!-- contenuto post -->
-            <p class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, sapien vel m bibendum, sapien velit bibendum sapien, vel bibendum sapien velit bibendum sapien.</p>
+    @foreach(var p in Model)
+    {
+        <div class="post-single-page">
+            <div class="post-content">
+                <!-- nome utente (con link al profilo) -->
+                <p class="author">@(((Post)p).IdUtente)</p>
+                <!-- contenuto post -->
+                <p class="content">@(((Post)p).Contenuto)</p>
 
-            <div class="actions">
-                <div>
-                    <!-- data post-->
-                    <p class="date">10:30 AM - 1 Jan 2022</p>
-                </div>
-                <div class="buttons">
-                    <a href="#">Rispondi</a>
-                    <a href="#">Like</a>
+                <div class="actions">
+                    <div>
+                        <!-- data post-->
+                        <p class="date">@(((Post)p).DataEora.ToString("h:mm tt - d MMM yyyy"))</p>
+                    </div>
+                    <div class="buttons">
+                        <a href="#">Rispondi</a>
+                        <a href="#">Like</a>
+                    </div>
                 </div>
             </div>
+            <!-- <form></form> -->
+            <!--<input type="text" placeholder=""-->
         </div>
-        <!-- <form></form> -->
-        <!--<input type="text" placeholder=""-->
-    </div>
+
+        <hr />
+        <br />
+    }
 
     <div class="comments">
         <!-- DIV CHE RACCHIUDE COMMENTI E RISPOSTE CHE SI CREANO SOTTO -->
