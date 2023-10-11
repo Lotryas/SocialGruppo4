@@ -818,7 +818,7 @@ div.email {
 */
 
 /* Stile per il body */
-body {
+.bodyprofilo {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -829,7 +829,7 @@ body {
 }
 
 /* Stile per il container */
-.container {
+.containerprofilo {
     width: 100%;
     max-width: 800px; /* Larghezza massima del contenuto */
     padding: 20px;
