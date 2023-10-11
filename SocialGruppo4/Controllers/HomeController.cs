@@ -1,6 +1,8 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using SocialGruppo4.Models;
+using SocialGruppo4.Models.Likes;
+using SocialGruppo4.Models.Post;
 using SocialGruppo4.Models.Utenti;
 using Utility;
 
@@ -20,10 +22,16 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         Entity? utente = (Entity?)HttpContext.Items["User"];
+        ViewBag.Likes = new List<int>();
+
         if (utente is not null)
         {
             ViewBag.Utenti = DAOUtenti.GetInstance().LatestToFollow(limit: 6, idUtente: utente.Id);
+            ViewBag.Likes = DAOLikes.GetInstance().ReadUserLikedPosts(utente.Id);
         }
+
+        ViewBag.Posts = DAOPost.GetInstance().Latest();
+
         return View();
     }
 
@@ -32,8 +40,20 @@ public class HomeController : Controller
         return View();
     }
 
+    [HttpPost]
     public IActionResult CreaPost()
     {
+        Utente? utente = (Utente?)HttpContext.Items["User"];
+        if (utente is null)
+        {
+            TempData["FlashMessage"] = new Dictionary<string, string>()
+            {
+                {"Status", "error"},
+                {"Message", "Devi accedere con il tuo account prima di poter pubblicare un post."}
+            };
+            return RedirectToAction("Index");
+        }
+
         IFormFile? imageFile = Request.Form.Files["imageFile"];
         if (imageFile is not null)
         {
@@ -42,8 +62,32 @@ public class HomeController : Controller
             imageFile.CopyTo(fileStream);
         }
 
-        Console.WriteLine(Request.Form["content"]);
+        Post post = new()
+        {
+            IdUtente = utente.Id,
+            IdPadre = null,
+            Contenuto = Request.Form["contenuto"],
+            DataEora = DateTime.Now,
+            MiPiace = 0,
+            Immagine = imageFile?.FileName
+        };
 
+        bool success = DAOPost.GetInstance().Insert(post);
+        if (!success)
+        {
+            TempData["FlashMessage"] = new Dictionary<string, string>()
+            {
+                {"Status", "error"},
+                {"Message", "Qualcosa è andato storto. Riprova più tardi."}
+            };
+            return RedirectToAction("Index");
+        }
+
+        TempData["FlashMessage"] = new Dictionary<string, string>()
+        {
+            {"Status", "success"},
+            {"Message", "Il tuo post è stato pubblicato con successo!"}
+        };
         return RedirectToAction("Index");
     }
 

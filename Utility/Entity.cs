@@ -35,7 +35,7 @@ namespace Utility
             {
                 if (riga.ContainsKey(proprieta.Name.ToLower()))
                 {
-                    object valore = riga[proprieta.Name.ToLower()];
+                    object valore = "";
 
                     switch (proprieta.PropertyType.Name.ToLower())
                     {
@@ -51,11 +51,22 @@ namespace Utility
                         case "datetime":
                             valore = DateTime.Parse(riga[proprieta.Name.ToLower()]);
                             break;
+                        case "string":
+                            valore = riga[proprieta.Name.ToLower()];
+                            break;
+                        default:
+                            valore = null!;
+                            break;
                     }
 
                     proprieta.SetValue(this, valore);
                 }
             }
+        }
+
+        public static string PulisciApici(string s)
+        {
+            return s.Replace("'", "''");
         }
     }
 }
