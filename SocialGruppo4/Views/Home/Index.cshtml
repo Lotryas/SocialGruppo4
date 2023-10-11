@@ -8,7 +8,7 @@
 <div class="home-container">
     <section class="w-full">
         <!-- Inizio form post -->
-        <form asp-action="CreaPost" method="POST" enctype="multipart/form-data">
+        <form asp-action="CreaPost" method="POST" enctype="multipart/form-data" onsubmit="submitNuovoPost(event)">
             <input type="file" name="imageFile" accept="image/png, image/jpeg" id="post_form_image" class="hidden" />
             <textarea name="contenuto" class="post-form-textarea" rows="5"
                 placeholder="A cosa stai pensando?"></textarea>
