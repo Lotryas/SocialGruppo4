@@ -11,7 +11,7 @@
 
 <body class="h-full">
     <header class="navbar">
-        <div class="navbar-container">
+        <div class="navbar-container container">
             <a id="logo" asp-controller="Home" asp-action="Index">Social</a>
             <nav>
                 <div class="navbar-items">
@@ -54,7 +54,9 @@
     </header>
 
     <main class="flex-grow">
-        @RenderBody()
+        <div class="container">
+            @RenderBody()
+        </div>
     </main>
 
     <footer>
