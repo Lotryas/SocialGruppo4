@@ -20,10 +20,11 @@ body {
   padding: 0;
   display: flex;
   flex-direction: column;
+  background-color: white;
 }
 
 .container {
-  max-width: 64rem;
+  max-width: 40rem;
   margin: 0 auto;
 }
 
@@ -164,7 +165,8 @@ main {
   padding: 10px;
   margin-top: 30px;
   width: 600px;
-  border: 1px solid rgba(204, 204, 204, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background-color: white;
 }
 
 .tweet p {
@@ -204,15 +206,10 @@ main {
 }
 
 footer {
-  background-color: #1da1f2;
-  color: white;
-  text-align: center;
-  padding-top: 3px 0;
-  position: relative;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin-top: 150px;
+  background-color: #eeeeee;
+  color: #444444;
+  padding: 2rem 1rem;
+  margin-top: 3rem;
 }
 
 .home-container {
