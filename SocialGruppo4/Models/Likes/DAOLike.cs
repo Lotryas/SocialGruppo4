@@ -22,12 +22,16 @@ namespace SocialGruppo4.Models.Likes
             throw new NotImplementedException();
         }
 
-        public bool Delete(int idUtente, int idPost)
+        public bool Delete(Entity e)
         {
+            Like like = (Like)e;
             return db.Update(@$"
                 DELETE FROM Likes
-                WHERE idUtente = {idUtente}
-                AND idPost = {idPost};
+                WHERE idUtente = {like.IdUtente}
+                AND idPost = {like.IdPost};
+
+                UPDATE Posts SET miPiace = miPiace - 1
+                WHERE id = {like.IdPost};
             ");
         }
 
@@ -40,8 +44,11 @@ namespace SocialGruppo4.Models.Likes
         {
             Like like = (Like)e;
             return db.Update(@$"
-                INSERT INTO Posts (idUtente, idPost)
+                INSERT INTO Likes (idUtente, idPost)
                 VALUES ({like.IdUtente}, {like.IdPost});
+
+                UPDATE Posts SET miPiace = miPiace + 1
+                WHERE id = {like.IdPost};
             ");
         }
 

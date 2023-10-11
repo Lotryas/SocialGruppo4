@@ -107,7 +107,18 @@ public class HomeController : Controller
             IdPost = id
         };
 
-        bool success = DAOLikes.GetInstance().Insert(like);
+        bool success;
+        List<int> userLikes = DAOLikes.GetInstance().ReadUserLikedPosts(utente.Id);
+
+        if (userLikes.Contains(id))
+        {
+            success = DAOLikes.GetInstance().Delete(like);
+        }
+        else
+        {
+            success = DAOLikes.GetInstance().Insert(like);
+        }
+
         if (!success)
         {
             TempData["FlashMessage"] = new Dictionary<string, string>()
