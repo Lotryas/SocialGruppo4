@@ -91,6 +91,37 @@ public class HomeController : Controller
         return RedirectToAction("Index");
     }
 
+    [HttpPost("posts/{id:int}/like")]
+    public IActionResult ToggleLike(int id)
+    {
+        Entity? utente = (Entity?)HttpContext.Items["User"];
+
+        if (utente is null)
+        {
+            return RedirectToAction("Index", "Auth");
+        }
+
+        Like like = new()
+        {
+            IdUtente = utente.Id,
+            IdPost = id
+        };
+
+        bool success = DAOLikes.GetInstance().Insert(like);
+        if (!success)
+        {
+            TempData["FlashMessage"] = new Dictionary<string, string>()
+            {
+                {"Status", "error"},
+                {"Message", "Qualcosa è andato storto. Riprova più tardi."}
+            };
+            return RedirectToAction("Index");
+        }
+
+
+        return RedirectToAction("Index");
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
