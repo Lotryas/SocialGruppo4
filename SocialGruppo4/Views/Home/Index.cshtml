@@ -1,59 +1,80 @@
-﻿@{
+﻿@using SocialGruppo4.Models.Post
+@using SocialGruppo4.Models.Utenti
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-
-<div clas="container-tweet">
-    <div class="tweet-compose">
-        <form enctype="multipart/form-data">
-            <textarea placeholder="A cosa stai pensando?"></textarea>
-            <div class="button-container">
-                <label for="image-upload" class="image-upload-label">Carica Immagine</label>
-                <button type="submit">Posta</button>
+<div class="home-container">
+    <section class="w-full">
+        <!-- Inizio form post -->
+        <form asp-action="CreaPost" method="POST" enctype="multipart/form-data" onsubmit="submitNuovoPost(event)">
+            <input type="file" name="imageFile" accept="image/png, image/jpeg" id="post_form_image" class="hidden" />
+            <textarea name="contenuto" class="post-form-textarea" rows="5"
+                placeholder="A cosa stai pensando?"></textarea>
+            <div class="post-form-buttons">
+                <label for="post_form_image" class="icon-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24"
+                        height="24">
+                        <path fill-rule="evenodd"
+                            d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </label>
+                <button type="submit" class="btn-primary">Pubblica</button>
             </div>
-            <input type="file" accept="image/*" id="image-upload" />
         </form>
-    </div>
-    <section class="post-container">
-        <div class="tweet">
-            <p class="author">John Doe</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, sapien vel bibendum bibendum,
-                sapien velit bibendum sapien, vel bibendum sapien velit bibendum sapien.</p>
-            <p class="date">10:30 AM - 1 Jan 2022</p>
-            <div class="actions">
-                <a href="#">Rispondi</a>
-                <a href="#">Like</a>
-            </div>
+        <!-- Fine form post -->
+
+        <!-- Inizio elenco post -->
+        <div class="post-container">
+            @foreach (Post post in ViewBag.Posts)
+            {
+                <div class="tweet">
+                    <div class="tweet-header">
+                        <p class="author">@post.Utente?.Nominativo</p>
+                        <p class="date">@post.DataEora.ToString("d/M/yyyy HH:mm")</p>
+                    </div>
+                    <p>@post.Contenuto</p>
+                    <div class="actions">
+                        <div class="action-container">
+                            <button type="button" onmouseenter="fillLike(event)" onmouseleave="unFillLike(event)"
+                                class="like-empty">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                    stroke="currentColor" width="24" height="24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                                </svg>
+                            </button>
+                            <small>@post.MiPiace</small>
+                        </div>
+                    </div>
+                </div>
+            }
         </div>
-        <div class="tweet">
-            <p class="author">Jane Smith</p>
-            <p>Nullam quis risus eget urna mollis ornare vel eu leo. Donec id elit non mi porta gravida at eget metus.
-                Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            <p class="date">9:15 AM - 1 Jan 2022</p>
-            <div class="actions">
-                <a href="#">Rispondi</a>
-                <a href="#">Like</a>
-            </div>
-        </div>
-        <div class="tweet">
-            <p class="author">Jane Smith</p>
-            <p>Nullam quis risus eget urna mollis ornare vel eu leo. Donec id elit non mi porta gravida at eget metus.
-                Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            <p class="date">9:15 AM - 1 Jan 2022</p>
-            <div class="actions">
-                <a href="#">Rispondi</a>
-                <a href="#">Like</a>
-            </div>
-        </div>
-        <div class="tweet">
-            <p class="author">Jane Smith</p>
-            <p>Nullam quis risus eget urna mollis ornare vel eu leo. Donec id elit non mi porta gravida at eget metus.
-                Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            <p class="date">9:15 AM - 1 Jan 2022</p>
-            <div class="actions">
-                <a href="#">Rispondi</a>
-                <a href="#">Like</a>
-            </div>
-        </div>
+        <!-- Fine elenco post -->
     </section>
+
+    <!-- Inizio potresti conoscere -->
+    @if (ViewBag.User is not null && ViewBag.Utenti.Count > 0)
+    {
+        <section class="home-utenti">
+            <h2>Potresti conoscere</h2>
+            <div class="mt-4">
+                @foreach (Utente utente in ViewBag.Utenti)
+                {
+                    <div class="home-card-utente">
+                        <h3 class="mb-2">@utente.Nominativo</h3>
+                        <form asp-controller="Utenti" asp-action="Follow" asp-route-id="@utente.Id" method="POST">
+                            <button type="submit" class="btn-secondary w-full">Segui</button>
+                        </form>
+                    </div>
+                }
+            </div>
+            <div class="mt-4 text-right">
+                <a asp-action="ElencoUtenti" asp-controller="Utenti" class="link">MOSTRA TUTTI</a>
+            </div>
+        </section>
+    }
+    <!-- Fine potresti conoscere -->
 </div>

@@ -10,44 +10,59 @@
 </head>
 
 <body class="h-full">
-    <header class="fixed-navbar">
-        <a id="logo" asp-controller="Home" asp-action="Index">Social</a>
-        <nav>
-            <a asp-controller="Home" asp-action="Index">Home</a>
-            <a href="Utenti/ElencoUtenti">Utenti</a>
-            <a href="#">Notifiche</a>
-            <a href="#">Messaggi</a>
-            <div class="dropdown">
-                <button class="dropbtn">Menu</button>
-                <div class="dropdown-content">
-                    @if (ViewBag.User is not null)
-                    {
-                        <a href="#">Profilo</a>
-                        @if (ViewBag.User.Amministratore)
-                        {
-                            <a asp-controller="Auth" asp-action="RegistraDipendente">Registra Dipendente</a>
-                        }
-                        <form asp-controller="Auth" asp-action="Logout" method="POST">
-                            <button id="logout" type="submit">Logout</button>
-                        </form>
-                    }
-                    else
-                    {
-                        <a asp-controller="Auth" asp-action="Index">Accedi</a>
-                    }
+    <header class="navbar">
+        <div class="navbar-container container">
+            <a id="logo" asp-controller="Home" asp-action="Index">Social</a>
+            <nav>
+                <div class="navbar-items">
+                    <a asp-controller="Home" asp-action="Index">Home</a>
+                    <a href="Utenti/ElencoUtenti">Utenti</a>
                 </div>
-            </div>
-        </nav>
+                @if (ViewBag.User is not null)
+                {
+                    <div class="dropdown">
+                        <button class="dropbtn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24"
+                                height="24">
+                                <path fill-rule="evenodd"
+                                    d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <div class="dropdown-content">
+                            <a asp-controller="Profilo" asp-action="Index" class="dropdown-item">
+                                Profilo
+                            </a>
+                            @if (ViewBag.User.Amministratore)
+                            {
+                                <a asp-controller="Auth" asp-action="RegistraDipendente" class="dropdown-item">
+                                    Registra dipendente
+                                </a>
+                            }
+                            <form asp-controller="Auth" asp-action="Logout" method="POST">
+                                <button id="logout" type="submit" class="dropdown-item">Logout</button>
+                            </form>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <a asp-controller="Auth" asp-action="Index" class="navbar-item">Accedi</a>
+                }
+            </nav>
+        </div>
     </header>
 
-    <div class="separatore"></div>
-
     <main class="flex-grow">
-        @RenderBody()
+        <div class="container">
+            @RenderBody()
+        </div>
     </main>
 
     <footer>
-        Progetto Social - Gruppo 4
+        <div class="container">
+            Progetto Social - Gruppo 4
+        </div>
     </footer>
 
     @if (TempData.ContainsKey("FlashMessage"))

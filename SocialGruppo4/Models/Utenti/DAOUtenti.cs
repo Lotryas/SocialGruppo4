@@ -117,5 +117,45 @@ namespace SocialGruppo4.Models.Utenti
 
             return utente;
         }
+
+        public List<Entity> Latest(int n)
+        {
+            List<Entity> utenti = new();
+            var tabella = db.Read($"SELECT TOP {n} * FROM Utenti ORDER BY id DESC;");
+
+            foreach (var riga in tabella)
+            {
+                Utente utente = new();
+                utente.FromDictionary(riga);
+                utenti.Add(utente);
+            }
+
+            return utenti;
+        }
+
+        public List<Entity> LatestToFollow(int limit, int idUtente)
+        {
+            List<Entity> utenti = new();
+
+            var tabella = db.Read(@$"
+                SELECT TOP {limit} *
+                FROM Utenti
+                WHERE id <> {idUtente} AND id NOT IN (
+                    SELECT idFollower
+                    FROM Followers
+                    WHERE idUtente = {idUtente}
+                )
+                ORDER BY id DESC;
+            ");
+
+            foreach (var riga in tabella)
+            {
+                Utente utente = new();
+                utente.FromDictionary(riga);
+                utenti.Add(utente);
+            }
+
+            return utenti;
+        }
     }
 }

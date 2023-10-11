@@ -2,6 +2,7 @@ using SocialGruppo4.Models.Utenti;
 
 namespace SocialGruppo4.Middleware
 {
+    // DOC: Questo middleware serve ad identificare l'utente ad ogni request
     public class AuthMiddleware
     {
         private readonly RequestDelegate _next;
@@ -11,6 +12,10 @@ namespace SocialGruppo4.Middleware
             _next = next;
         }
 
+        // DOC: Questo metodo viene chiamato su ogni richiesta e grazie al
+        // al suo oggetto HttpContext accede ai cookie e controlla se
+        // se l'utente ha già effettuato l'accesso, in quel caso lo recupera
+        // dal database e lo salva negli Items del context.
         public async Task InvokeAsync(HttpContext context)
         {
             var idUtente = context.Request.Cookies["auth"];
@@ -30,6 +35,7 @@ namespace SocialGruppo4.Middleware
         }
     }
 
+    // DOC: Registra il middleware per poter essere chiamato tramite app.UseAuthMiddleware()
     public static class RequestCultureMiddlewareExtensions
     {
         public static IApplicationBuilder UseAuthMiddleware(
