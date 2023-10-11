@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using SocialGruppo4.Models;
+using SocialGruppo4.Models.Likes;
 using SocialGruppo4.Models.Post;
 using SocialGruppo4.Models.Utenti;
 using Utility;
@@ -21,9 +22,12 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         Entity? utente = (Entity?)HttpContext.Items["User"];
+        ViewBag.Likes = new List<int>();
+
         if (utente is not null)
         {
             ViewBag.Utenti = DAOUtenti.GetInstance().LatestToFollow(limit: 6, idUtente: utente.Id);
+            ViewBag.Likes = DAOLikes.GetInstance().ReadUserLikedPosts(utente.Id);
         }
 
         ViewBag.Posts = DAOPost.GetInstance().Latest();

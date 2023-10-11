@@ -237,7 +237,15 @@ main {
 }
 
 .tweet .like-empty:hover {
-  color: #dc2626;
+  color: var(--red-600);
+}
+
+.tweet .like-full {
+  color: var(--red-600);
+}
+
+.tweet .like-full:hover {
+  color: var(--gray-800);
 }
 
 .tweet .action-container {
@@ -271,6 +279,10 @@ footer {
 
 .w-full {
   width: 100%;
+}
+
+.red-600 {
+  color: var(--red-600);
 }
 
 .btn-secondary {

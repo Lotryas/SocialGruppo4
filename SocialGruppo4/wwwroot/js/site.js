@@ -2,14 +2,22 @@
     event.target.closest(".flash-message").style.display = "none";
 }
 
-function fillLike(event) {
+function fillLike(event, isLiked) {
     let likeSvg = event.target.querySelector("svg");
-    likeSvg.setAttribute("fill", "currentColor");
+    if (isLiked == "False") {
+        likeSvg.setAttribute("fill", "currentColor");
+    } else {
+        likeSvg.setAttribute("fill", "none");
+    }
 }
 
-function unFillLike(event) {
+function unFillLike(event, isLiked) {
     let likeSvg = event.target.querySelector("svg");
-    likeSvg.setAttribute("fill", "none");
+    if (isLiked == "True") {
+        likeSvg.setAttribute("fill", "currentColor");
+    } else {
+        likeSvg.setAttribute("fill", "none");
+    }
 }
 
 function submitNuovoPost(event) {
