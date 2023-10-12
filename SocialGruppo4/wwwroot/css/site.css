@@ -522,21 +522,31 @@ footer {
   background-color: #0056b3;
 }
 
-
-#recuperaacc {
-  font-size: 18px;
-  color: crimson;
-  background-color: ghostwhite;
-  border: none;
-  border-radius: 3px;
-  margin-left: 5px;
+.form-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: end;
 }
 
-#recuperaacc:hover {
-  color: white;
-  background-color: crimson;
+.auth-links {
+  text-align: center;
+  margin-top: 1rem;
 }
 
+.auth-links a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  margin-left: 0;
+  margin-right: 0;
+  text-decoration: none;
+  color: var(--twitter);
+  font-size: 1rem;
+}
+
+.auth-links a:hover {
+  color: var(--twitter-dark);
+  text-decoration: underline;
+}
 
 /* dropdown*/
 
