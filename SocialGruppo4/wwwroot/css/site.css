@@ -277,6 +277,10 @@ footer {
   margin-bottom: 0.5rem;
 }
 
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
 .w-full {
   width: 100%;
 }
@@ -615,34 +619,30 @@ footer {
 
 /* Stile per il titolo */
 h1 {
-  text-align: center;
-  color: #1da1f2;
-  /* Blu Twitter */
+  color: var(--gray-800);
 }
 
 /* Stile per la lista ul */
 ul.elenco-utenti {
   list-style-type: none;
-  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }
 
 /* Stile per gli elementi li */
 li.utente {
-  margin-bottom: 20px;
-  /* Aggiunge spazio tra gli elementi */
-  padding: 10px;
-  border: 1px solid #e1e8ed;
-  /* Blu Twitter più chiaro */
+  padding: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
   background-color: #ffffff;
-  /* Bianco */
   transition: background-color 0.3s ease;
-  /* Aggiunge una transizione durante l'hover */
+  cursor: pointer;
 }
 
 /* Stile per gli elementi li quando passano sopra */
 li.utente:hover {
   background-color: #f5f8fa;
-  /* Blu Twitter ancora più chiaro durante l'hover */
 }
 
 /* Stile per il nome dell'utente */
