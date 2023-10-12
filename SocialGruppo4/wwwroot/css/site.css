@@ -832,3 +832,88 @@ div.email {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+/*                                                 
+    ----------------------------------------------PAGINA PROFILO--------------------------------------------                                      
+*/
+
+
+/* Stile per il container */
+.containerprofilo {
+  width: 100%;
+  max-width: 800px;
+  /* Larghezza massima del contenuto */
+  padding: 20px;
+}
+
+/* Stile per l'header del profilo */
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-header img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.profile-header h1 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Stile per la sezione della biografia */
+.biography p {
+  font-size: 18px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+/* Stile per la sezione di composizione del tweet */
+.tweet-compose textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 1rem;
+  font-size: 18px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  resize: none;
+}
+
+.tweet-compose .image-upload-label {
+    background-color: #1DA1F2;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: none;
+    outline: none;
+}
+
+.tweet-compose .image-upload-label:hover {
+  background-color: #007bff;
+}
+
+.tweet-compose button {
+    background-color: #1DA1F2;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: none; 
+    outline: none; 
+}
+
+.tweet-compose button:hover {
+  background-color: #007bff;
+}
