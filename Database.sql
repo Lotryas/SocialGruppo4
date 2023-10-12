@@ -81,3 +81,4 @@ insert into Followers (idUtente, idFollower)
 values (1, 2);
 
 select * from Followers
+select * from Likes

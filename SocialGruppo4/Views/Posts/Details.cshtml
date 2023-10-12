@@ -1,0 +1,156 @@
+﻿@using SocialGruppo4.Models
+@using SocialGruppo4.Models.Post;
+@using Utility;
+@model List<List<Utility.Entity>>;
+@{
+    ViewData["Title"] = $"Post di {((Post)Model[0][0]).Utente.Nominativo}";
+}
+
+<!-- 
+    DA FINIRE:
+    
+    -collegamento BE
+    -rivedere colori e larghezza container
+-->
+
+<section class="post-page-container">
+    <!-- POST -->
+    @foreach(var p in Model[0])
+    {
+        <div class="post-single-page">
+            <div class="post-content">
+                <!-- nome utente (con link al profilo) -->
+                <p class="author">@(((Post)p).Utente.Nominativo)</p>
+                <!-- contenuto post -->
+                <p class="content">@(((Post)p).Contenuto)</p>
+
+                <div class="actions">
+                    <div>
+                        <!-- data post-->
+                        <p class="date">@(((Post)p).DataEora.ToString("h:mm tt - d MMM yyyy"))</p>
+                    </div>
+                    <div class="buttons">
+                        <button onclick="answerFormToggler(@(((Post)p).Id))">Rispondi</button>
+                        <button>Like</button>
+                    </div><!-- .buttons -->
+                </div><!-- .actions -->
+            </div> <!-- .post-content -->
+            
+            <!-- inserire id commento padre nell'id, per mostrare soltanto il  -->
+            <div class="comment-form" id="comment-form-@(((Post)p).Id)">
+                <form action="#" method="POST">
+                    <div class="input-wrapper">
+                        <textarea class="answer" name="risposta" rows="2" placeholder="Rispondi a @(((Post)p).Utente.Nominativo)"></textarea>
+                        <!-- cercare icona da sostituire -->
+                        <button type="submit">Salva Risposta</button>
+                    </div>
+                </form>
+            </div><!-- .comment-form -->
+        </div> <!-- .post-single-page -->
+    }
+
+    @for(int i = 1; i < Model.Count; i++)
+    {
+        <div class="comments">
+        @for(int j = 0; j < Model[i].Count; j++)
+        {
+            <!-- DIV CHE RACCHIUDE COMMENTI E RISPOSTE CHE SI CREANO SOTTO -->
+            <div class="comments-thread">
+                <div class=@(j == 0 ? "post-first-comment" : "post-first-comment-answer")>
+                
+                    <div class="post-content">
+                        @if(j > 0)
+                        {       
+                        <div class="reference"><span>@(((Post)Model[i][j]).Utente.Nominativo)</span>: </div>
+                        }
+                        <!-- nome utente (con link al profilo) -->
+                        <p class="author">@(((Post)Model[i][j]).Utente.Nominativo)</p>
+                        <!-- contenuto post -->
+                        <p class="content">@(((Post)Model[i][j]).Contenuto)</p>
+
+                        <div class="actions">
+                            <div>
+                                <!-- data post-->
+                                <p class="date">@(((Post)Model[i][j]).DataEora.ToString("h:mm tt - d MMM yyyy"))</p>
+                            </div>
+                            <div class="buttons">
+                                <button onclick="answerFormToggler(@(((Post)Model[i][j]).Id))">Rispondi</button>
+                                <button>Like</button>
+                            </div><!-- .buttons -->
+                        </div><!-- .actions -->
+
+                        <div class="comment-form" id="comment-form-@(((Post)Model[i][j]).Id)">
+                            <form action="#" method="POST">
+                                <div class="input-wrapper">
+                                    <textarea class="answer" name="risposta" rows="2" placeholder="Rispondi a @(((Post)Model[i][j]).Utente.Nominativo)"></textarea>
+                                    <!-- cercare icona da sostituire -->
+                                    <button type="submit">Salva Risposta</button>
+                                </div><!-- .input-wrapper -->
+                            </form>
+                        </div><!-- .comment-form -->
+                    </div> <!-- .post-content -->
+
+                </div><!-- .post-first-comment || -answer -->  
+            </div><!-- .comments.thread -->
+        }
+        </div><!-- .comments -->
+    }
+</section>
+
+@*@helper RenderFirstComment(Post post)
+{
+    <div class="post-first-comment">
+        <div class="post-content">
+            <p class="author">@post.Utente.Nominativo</p>
+            <p class="content">@post.Contenuto</p>
+            <div class="actions">
+                <div>
+                    <p class="date">@post.DataEora.ToString("h:mm tt - d MMM yyyy")</p>
+                </div>
+                <div class="buttons">
+                    <button onclick="answerFormToggler(@post.Id)">Rispondi</button>
+                    <button>Like</button>
+                </div>
+            </div>
+            <div class="comment-form" id="comment-form-@post.Id">
+                <form action="#" method="POST">
+                    <div class="input-wrapper">
+                        <textarea class="answer" name="risposta" rows="2" placeholder="Rispondi a @post.Utente.Nominativo"></textarea>
+                        <button type="submit">Salva Risposta</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+}*@
+
+                @*<!-- COMMENTO DI RISPOSTA AL COMMENTO-->
+                
+                    <div class="post-content">
+                        <!-- nome utente (con link al profilo) -->
+                        <p class="author">@(((Post)Model[i][j]).Utente.Nominativo)</p>
+                        <!-- contenuto post -->
+                        <p class="content">@(((Post)Model[i][j]).Contenuto)</p>
+
+                        <div class="actions">
+                            <div>
+                                <!-- data post-->
+                                <p class="date">@(((Post)Model[i][j]).DataEora.ToString("h:mm tt - d MMM yyyy"))</p>
+                            </div>
+                            <div class="buttons">
+                                <button onclick="answerFormToggler(@(((Post)Model[i][j]).Id))">Rispondi</button>
+                                <button>Like</button>
+                            </div><!-- .buttons -->
+                        </div><!-- .actions -->
+
+                        <div class="comment-form" id="comment-form-@(((Post)Model[i][j]).Id)">
+                            <form action="#" method="POST">
+                                <div class="input-wrapper">
+                                    <textarea class="answer" name="risposta" rows="2" placeholder="Rispondi a @(((Post)Model[i][j]).Utente.Nominativo)"></textarea>
+                                    <!-- cercare icona da sostituire -->
+                                    <button type="submit">Salva Risposta</button>
+                                </div>
+                            </form>
+                        </div><!-- .comment-form -->
+                    </div> <!-- .post-content -->
+                </div><!-- .post-first-comment-answer -->*@

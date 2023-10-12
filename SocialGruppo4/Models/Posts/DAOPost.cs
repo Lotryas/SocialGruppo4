@@ -128,5 +128,45 @@ namespace SocialGruppo4.Models.Post
 
             return ris;
         }
+
+        public List<List<Entity>> FullPost(int id)
+        {
+            List<Entity> postOriginale = new() { Find(id) };
+
+            //{ postOriginale, threadCommenti<commento-risposte>, threadCommenti<commento-risposte>....}
+            List<List<Entity>> ris = new() { postOriginale };
+
+            List<Entity> threadCommenti = new();
+
+
+            List<int> idRispostaPost = new();
+
+            foreach (Entity e in Read())
+                if (e is Post && ((Post)e).IdPadre == id)
+                    idRispostaPost.Add(((Post)e).Id);
+
+            foreach (int idr in idRispostaPost)
+            {
+                threadCommenti.Add(Find(idr));
+
+                List<int?> idRisposte = new();
+
+                foreach (Entity e in Read())
+                    if (e is Post && ((Post)e).IdPadre != null)
+                        if (((Post)e).IdPadre == idr || idRisposte.Contains(((Post)e).IdPadre) && !idRisposte.Contains(((Post)e).Id))
+                            idRisposte.Add(((Post)e).Id);
+
+                foreach (int idRis in idRisposte)
+                    threadCommenti.Add(Find(idRis));
+
+                ris.Add(threadCommenti);
+
+                threadCommenti.Clear();
+                idRisposte.Clear();
+            }
+
+
+            return ris;
+        }
     }
 }

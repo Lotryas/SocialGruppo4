@@ -385,70 +385,6 @@ footer {
   gap: 1rem;
 }
 
-
-/*              
-    POST (qui per poco)
-*/
-
-.post-page-container {
-  padding-right: 5px;
-}
-
-.post-single-page {
-  border-radius: 20px;
-  padding: 10px;
-  padding-right: 10px;
-  margin-bottom: 30px;
-  width: 600px;
-  border: 1px solid rgba(204, 204, 204, 0.2);
-}
-
-.post-single-page p {
-  margin: 0;
-  font-size: 18px;
-  line-height: 1.2;
-  /* margin-left: 5px; */
-}
-
-.post-single-page .author {
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.post-single-page .date {
-  font-size: 14px;
-  color: #657786;
-}
-
-.post-single-page .actions {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-  /*padding-right: 20px;*/
-}
-
-.post-single-page .actions .buttons {
-  margin-right: 15px;
-  /*padding-right: 20px;*/
-}
-
-.post-single-page .actions a {
-  color: #1DA1F2;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: bold;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-}
-
-.post-single-page .actions a:first-child {
-  margin-right: 10px;
-}
-
-.post-single-page .actions a:hover {
-  text-decoration: underline;
-  box-shadow: 0 0 5px rgba(50, 172, 248, 0.5);
-}
-
 .listazioni {
   display: flex;
   flex-direction: row;
@@ -668,254 +604,229 @@ div.email {
   /* Nero */
 }
 
-
 /*
 
-    ------------------------------------------------------------        PAGINA POST      ------------------------------------------------------------
+     -------------------------------------------------------------------------------------      PAGINA POST        -------------------------------------------------------------------------------------
 
 */
+
+/*  ----------------------------------------------------    GENERALE        ----------------------------------------------------    */
 
 .post-page-container {
-  padding: 0;
-  border: 2px solid purple;
-  border-radius: 10px;
-  width: 60vw;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: end;
+    padding: 0;
+    border: 2px solid purple;
+    border-radius: 10px;
+    width: 60vw;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
 }
 
-.post-page-container .post-single-page {
-  margin: 0;
-  width: 100%;
-  background-color: rgba(216, 132, 132, 0.2);
-}
+    .post-page-container .post-content {
+        width: 100%;
+        padding: 5px;
+    }
 
-.post-page-container .post-content {
-  width: 100%;
-  padding: 5px;
-}
+    .post-page-container .author {
+        font-weight: bold;
+        text-transform: uppercase;
+        margin: 7.5px 0;
+    }
 
-.post-page-container .post-single-page .content {
-  width: 95%;
-  font-size: 200%;
-  line-height: 1.2;
-}
+    .post-page-container .content {
+        margin: 0;
+        line-height: 1.2;
+    }
 
-.post-page-container .post-single-page .post-content {
-  padding: 10px;
-}
+    .post-page-container .date {
+        color: #657786;
+        margin: 10px 0;
+    }
 
-.post-page-container .post-single-page .author {
-  font-size: 150%;
-  font-weight: bold;
-  margin-bottom: 10px;
-  margin-top: 5px;
-}
+    .post-page-container .actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+        padding: 0;
+    }
 
-.post-page-container .post-single-page .date {
-  font-size: 20px;
-}
+    .post-page-container .buttons {
+        padding: 0;
+        height: 100%;
+        margin-right: 10px;
+    }
 
-.post-page-container .post-single-page .buttons {
-  margin-right: 20px;
-}
+        .post-page-container .buttons button {
+            border: none;
+            background: inherit;
+            font-size: 14px;
+            font-weight: bold;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: #1DA1F2;
+            padding: 0;
+            margin-left: 30px;
+        }
 
-.post-page-container .actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
-  padding: 0;
-}
+            .post-page-container .buttons button:hover {
+                text-decoration: underline;
+                box-shadow: 0 0 5px rgba(50, 172, 248, 0.5);
+            }
 
-.post-page-container .buttons {
-  padding: 0;
-  height: 100%;
-  margin-right: 10px;
-}
+    .post-page-container div[id^="comment-form-"] {
+        display: none;
+    }
 
-.post-page-container .buttons a {
-  margin-left: 30px;
-  color: #1DA1F2;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: bold;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-}
+    .post-page-container .answer {
+        padding: 10px 15px;
+        font-size: 150%;
+        border: none;
+        width: 100%;
+        resize: none;
+        outline: none;
+        background: inherit;
+        height: auto;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+    }
 
-.post-page-container .buttons a:last-child {
-  margin-right: 10px;
-}
+        .post-page-container .answer:focus {
+            border: none;
+        }
 
-.post-page-container .buttons a:hover {
-  text-decoration: underline;
-  box-shadow: 0 0 5px rgba(50, 172, 248, 0.5);
-}
+        .post-page-container .answer::-webkit-scrollbar {
+            width: 10px;
+        }
 
-.post-page-container .post-first-comment {
-  background-color: rgba(71, 173, 204, 0.2);
-  padding: 4px 10px;
-  margin-bottom: 5px;
-  font-size: 120%;
-  border-radius: 7px;
-  width: 98%;
-}
+        .post-page-container .answer::-webkit-scrollbar-track {
+            background: inherit;
+        }
 
-.post-page-container .post-first-comment-answer {
-  background-color: rgba(14, 121, 46, 0.2);
-  padding: 4px 10px;
-  font-size: 120%;
-  border-radius: 7px;
-  width: 90%;
-  margin-bottom: 5px;
-}
+        .post-page-container .answer::-webkit-scrollbar-thumb {
+            background-color: blue;
+            border-radius: 20px;
+            border: 3px solid inherit;
+        }
 
-.post-page-container .post-first-comment-answer:last-child {
-  margin-bottom: 0;
-}
+    .post-page-container .input-wrapper {
+        display: flex;
+        flex-direction: row;
+        height: auto;
+        justify-content: space-between;
+        background-color: rgba(57, 228, 108, 0.2);
+        border: 1px solid slateblue;
+        border-radius: 15px;
+    }
 
-.post-page-container .author {
-  font-weight: bold;
-  text-transform: uppercase;
-  margin: 7.5px 0;
-}
+        .post-page-container .input-wrapper button {
+            border: none;
+            background: inherit;
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
 
-.post-page-container .content {
-  margin: 0;
-  line-height: 1.2;
-}
+    /*  ----------------------------------------------------    POST        ----------------------------------------------------    */
 
-.post-page-container .date {
-  color: #657786;
-  margin: 10px 0;
-}
+    .post-page-container .post-single-page {
+        margin: 0;
+        padding-bottom: 5px;
+        width: 100%;
+        background-color: rgba(216, 132, 132, 0.2);
+    }
 
-.post-page-container .comments {
-  width: 90%;
-  border: 1px solid brown;
-  float: right;
-  padding-bottom: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: end;
-}
+        .post-page-container .post-single-page .post-content {
+            padding: 10px;
+        }
 
-.post-page-container .comments-thread {
-  margin-top: 15px;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: end;
-  width: 100%;
-}
+        .post-page-container .post-single-page .content {
+            width: 95%;
+            font-size: 200%;
+            line-height: 1.2;
+        }
 
-.post-page-container .comments .date {
-  font-size: 14px;
-}
+        .post-page-container .post-single-page .author {
+            font-size: 200%;
+            font-weight: bold;
+            margin-bottom: 10px;
+            margin-top: 5px;
+        }
 
-.post-page-container .comments .actions {
-  padding: 0;
-}
+        .post-page-container .post-single-page .date {
+            font-size: 20px;
+        }
 
-.post-page-container .reference {
-  margin: 5px 25px 5px 0;
-  border-bottom: 1px solid red;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
+        .post-page-container .post-single-page .buttons {
+            margin-right: 20px;
+        }
 
-/*                                                 
-    ----------------------------------------------PAGINA PROFILO--------------------------------------------                                      
-*/
+        .post-page-container .post-single-page .input-wrapper {
+            margin: 0 5px;
+        }
 
-/* Stile per il container principale */
-.containerprofilo {
-  width: 100%;
-  max-width: 800px;
-  padding: 20px;
-  background-color: #fff;
-  /* Sfondo bianco */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  /* Ombra leggera */
-  border-radius: 10px;
-  /* Bordo arrotondato */
-  text-align: center;
-}
 
-/* Stile per l'header del profilo */
-.profile-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
-}
+    /*  ----------------------------------------------------    COMMENTO RISPOSTA POST        ----------------------------------------------------    */
 
-.profile-header img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  margin-bottom: 10px;
-}
 
-.profile-header h1 {
-  font-size: 24px;
-  font-weight: bold;
-  color: #1da1f2;
-  /* Blu Twitter */
-}
+    .post-page-container .comments {
+        width: 90%;
+        border: 1px solid brown;
+        float: right;
+        padding-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+    }
 
-/* Stile per la sezione della biografia */
-.biography p {
-  font-size: 18px;
-  margin: 0;
-  margin-bottom: 10px;
-}
+    .post-page-container .comments-thread {
+        margin: 10px 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        width: 100%;
+    }
 
-/* Stile per la sezione di composizione del tweet */
-.tweet-compose textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 1rem;
-  font-size: 18px;
-  box-sizing: border-box;
-  margin-bottom: 10px;
-  resize: none;
-}
+    .post-page-container .comments .date {
+        font-size: 14px;
+    }
 
-.tweet-compose .image-upload-label {
-  background-color: #1da1f2;
-  /* Blu Twitter */
-  color: white;
-  padding: 10px;
-  border-radius: 9999px;
-  font-size: 16px;
-  cursor: pointer;
-  text-align: center;
-  transition: background-color 0.3s ease;
-}
+    .post-page-container .comments .actions {
+        padding: 0;
+    }
 
-.tweet-compose .image-upload-label:hover {
-  background-color: #007bff;
-  /* Blu scuro al passaggio del mouse */
-}
+    .post-page-container .comments .answer {
+        font-size: 110%;
+    }
 
-.tweet-compose button {
-  background-color: #1da1f2;
-  /* Blu Twitter */
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px 20px;
-  border-radius: 9999px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+    .post-page-container .post-first-comment {
+        background-color: rgba(71, 173, 204, 0.2);
+        padding: 4px 10px;
+        margin-bottom: 5px;
+        font-size: 120%;
+        border-radius: 7px;
+        width: 98%;
+    }
 
-.tweet-compose button:hover {
-  background-color: #007bff;
-  /* Blu scuro al passaggio del mouse */
-}
+    .post-page-container .post-first-comment-answer {
+        background-color: rgba(14, 121, 46, 0.2);
+        padding: 4px 10px;
+        font-size: 120%;
+        border-radius: 7px;
+        width: 90%;
+        margin-bottom: 5px;
+    }
+
+        .post-page-container .post-first-comment-answer:last-child {
+            margin-bottom: 0;
+        }
+
+
+    .post-page-container .reference {
+        margin: 5px 25px 5px 0;
+        border-bottom: 1px solid red;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+

@@ -25,3 +25,17 @@ function submitNuovoPost(event) {
         event.preventDefault();
     }
 }
+
+// PAGINA POST
+
+let isHidden = true
+
+function answerFormToggler(id) {
+
+    isHidden = !isHidden
+    let commentForm = `comment-form-${id}`
+
+    isHidden ?
+        document.getElementById(commentForm).style.display = "none" :
+        document.getElementById(commentForm).style.display = "block";
+}

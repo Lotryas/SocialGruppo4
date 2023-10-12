@@ -6,9 +6,9 @@ namespace SocialGruppo4.Controllers
 {
     public class PostsController : Controller
     {
-        public IActionResult ElencoPosts()
+        public IActionResult Details(int id)
         {
-            return View(DAOPost.GetInstance().Read());
+            return View(DAOPost.GetInstance().FullPost(id));
         }
     }
 }
