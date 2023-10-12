@@ -880,14 +880,16 @@ div.email {
 }
 
 .tweet-compose .image-upload-label {
-  background-color: #1DA1F2;
-  color: white;
-  padding: 10px;
-  border-radius: 9999px;
-  font-size: 16px;
-  cursor: pointer;
-  text-align: center;
-  transition: background-color 0.3s ease;
+    background-color: #1DA1F2;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: none;
+    outline: none;
 }
 
 .tweet-compose .image-upload-label:hover {
@@ -895,14 +897,16 @@ div.email {
 }
 
 .tweet-compose button {
-  background-color: #1DA1F2;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px 20px;
-  border-radius: 9999px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+    background-color: #1DA1F2;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: none; 
+    outline: none; 
 }
 
 .tweet-compose button:hover {
