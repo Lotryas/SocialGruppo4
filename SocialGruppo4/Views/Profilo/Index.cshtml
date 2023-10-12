@@ -1,35 +1,28 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="site.css">
-    <title>Il Mio Profilo</title>
-</head>
-<body class="bodyprofilo">
-    <div class="containerprofilo">
-        <header class="profile-header">
-            <img src="immagine-profilo.jpg" alt="Immagine del Profilo">
-            <h1>Nome Utente</h1>
-        </header>
-        <div class="biography">
-            <p class="number">Numero di telefono: 333333333</p>
-            <p class="adress">Indirizzo: Via Roma 20</p>
-            <p class="tax code">Codice Fiscale: DFGHJK88P45H798D</p>
-        </div>
-        <div class="tweet-compose">
-            <form enctype="multipart/form-data">
-                <textarea placeholder="A cosa stai pensando?"></textarea>
-                <div class="button-container">
-                    <label for="image-upload" class="image-upload-label">
-                        Carica Immagine
-                        <input type="file" accept="image/*" id="image-upload" style="display: none;" />
-                    </label>
+﻿@{
+    ViewData["Title"] = "Il mio profilo";
+}
 
-                    <button type="submit">Posta</button>
-                </div>
-            </form>
-        </div>
+<div class="containerprofilo">
+    <header class="profile-header">
+        <img src="immagine-profilo.jpg" alt="Immagine del Profilo">
+        <h1>Nome Utente</h1>
+    </header>
+    <div class="biography">
+        <p class="number">Numero di telefono: 333333333</p>
+        <p class="adress">Indirizzo: Via Roma 20</p>
+        <p class="tax code">Codice Fiscale: DFGHJK88P45H798D</p>
     </div>
-</body>
-</html>
+    <div class="tweet-compose">
+        <form enctype="multipart/form-data">
+            <textarea placeholder="A cosa stai pensando?"></textarea>
+            <div class="button-container">
+                <label for="image-upload" class="image-upload-label">
+                    Carica Immagine
+                    <input type="file" accept="image/*" id="image-upload" style="display: none;" />
+                </label>
+
+                <button type="submit">Posta</button>
+            </div>
+        </form>
+    </div>
+</div>

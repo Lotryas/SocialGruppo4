@@ -821,19 +821,6 @@ div.email {
     ----------------------------------------------PAGINA PROFILO--------------------------------------------                                      
 */
 
-/* Stile per il body */
-/* Stile per il corpo della pagina */
-.bodyprofilo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
-  /* Colore di sfondo grigio chiaro */
-}
-
 /* Stile per il container principale */
 .containerprofilo {
   width: 100%;
