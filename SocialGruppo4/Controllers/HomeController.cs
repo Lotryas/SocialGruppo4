@@ -28,9 +28,12 @@ public class HomeController : Controller
         {
             ViewBag.Utenti = DAOUtenti.GetInstance().LatestToFollow(limit: 6, idUtente: utente.Id);
             ViewBag.Likes = DAOLikes.GetInstance().ReadUserLikedPosts(utente.Id);
+            ViewBag.Posts = DAOPost.GetInstance().LatestFollowing(utente.Id);
         }
-
-        ViewBag.Posts = DAOPost.GetInstance().Latest();
+        else
+        {
+            ViewBag.Posts = DAOPost.GetInstance().Latest();
+        }
 
         return View();
     }

@@ -88,7 +88,35 @@ namespace SocialGruppo4.Models.Post
         {
             List<Entity> ris = new();
 
-            List<Dictionary<string, string>> righe = db.Read("SELECT * FROM Posts ORDER BY id DESC;");
+            List<Dictionary<string, string>> righe = db.Read(@"
+                SELECT * FROM Posts ORDER BY id DESC;
+            ");
+
+            foreach (Dictionary<string, string> riga in righe)
+            {
+                Post p = new();
+                p.FromDictionary(riga);
+                p.Utente = (Utente?)DAOUtenti.GetInstance().Find(p.IdUtente);
+                ris.Add(p);
+            }
+
+            return ris;
+        }
+
+        public List<Entity> LatestFollowing(int idUtente)
+        {
+            List<Entity> ris = new();
+
+            List<Dictionary<string, string>> righe = db.Read(@$"
+                SELECT * FROM Posts
+                WHERE Posts.idUtente IN (
+                    SELECT Followers.idFollower
+                    FROM Followers
+                    WHERE Followers.idUtente = {idUtente}
+                )
+                OR Posts.idUtente = {idUtente}
+                ORDER BY id DESC;
+            ");
 
             foreach (Dictionary<string, string> riga in righe)
             {
