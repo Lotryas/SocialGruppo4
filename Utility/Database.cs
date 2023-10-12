@@ -22,21 +22,21 @@ namespace Utility
 
         public List<Dictionary<string, string>> Read(string query)
         {
-            List<Dictionary<string, string>> ris = new List<Dictionary<string, string>>();
+            List<Dictionary<string, string>> ris = new();
 
             Connection.Open();
 
-            SqlCommand cmd = new SqlCommand(query, Connection);
+            SqlCommand cmd = new(query, Connection);
 
             SqlDataReader dr = cmd.ExecuteReader();
 
             while (dr.Read())
             {
-                Dictionary<string, string> riga = new Dictionary<string, string>();
+                Dictionary<string, string> riga = new();
 
                 for (int i = 0; i < dr.FieldCount; i++)
                 {
-                    riga.Add(dr.GetName(i).ToLower(), dr.GetValue(i).ToString());
+                    riga.Add(dr.GetName(i).ToLower(), dr.GetValue(i).ToString()!);
                 }
 
                 ris.Add(riga);
@@ -81,7 +81,7 @@ namespace Utility
             }
             catch
             {
-                return null;
+                return null!;
             }
         }
     }
