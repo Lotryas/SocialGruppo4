@@ -35,6 +35,10 @@
                         <p class="author">@post.Utente?.Nominativo</p>
                         <p class="date">@post.DataEora.ToString("d/M/yyyy HH:mm")</p>
                     </div>
+                    @if (@post.Immagine is not null && @post.Immagine != string.Empty)
+                    {
+                        <img src="~/images/posts/@post.Immagine" class="w-full mb-2 rounded">
+                    }
                     <p>@post.Contenuto</p>
                     <div class="actions">
                         <div class="action-container">
