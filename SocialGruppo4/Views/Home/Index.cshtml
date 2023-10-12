@@ -30,7 +30,7 @@
         <div class="post-container">
             @foreach (Post post in ViewBag.Posts)
             {
-                <div class="tweet">
+                <a asp-action="Details" asp-controller="Posts" asp-route-id="@post.Id" class="tweet">
                     <div class="tweet-header">
                         <p class="author">@post.Utente?.Nominativo</p>
                         <p class="date">@post.DataEora.ToString("d/M/yyyy HH:mm")</p>
@@ -60,7 +60,7 @@
                             <small>@post.MiPiace</small>
                         </div>
                     </div>
-                </div>
+                </a>
             }
         </div>
         <!-- Fine elenco post -->

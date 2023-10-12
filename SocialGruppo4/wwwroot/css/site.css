@@ -186,12 +186,15 @@ main {
 }
 
 .tweet {
+  display: block;
   border-radius: 20px;
   padding: 1rem;
   margin-top: 30px;
   width: 100%;
   border: 1px solid rgba(0, 0, 0, 0.1);
   background-color: white;
+  text-decoration: none;
+  color: var(--gray-800);
 }
 
 .tweet-header {
@@ -613,220 +616,219 @@ div.email {
 /*  ----------------------------------------------------    GENERALE        ----------------------------------------------------    */
 
 .post-page-container {
-    padding: 0;
-    border: 2px solid purple;
-    border-radius: 10px;
-    width: 60vw;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: end;
+  padding: 0;
+  border: 2px solid purple;
+  border-radius: 10px;
+  width: 60vw;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
 }
 
-    .post-page-container .post-content {
-        width: 100%;
-        padding: 5px;
-    }
+.post-page-container .post-content {
+  width: 100%;
+  padding: 5px;
+}
 
-    .post-page-container .author {
-        font-weight: bold;
-        text-transform: uppercase;
-        margin: 7.5px 0;
-    }
+.post-page-container .author {
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 7.5px 0;
+}
 
-    .post-page-container .content {
-        margin: 0;
-        line-height: 1.2;
-    }
+.post-page-container .content {
+  margin: 0;
+  line-height: 1.2;
+}
 
-    .post-page-container .date {
-        color: #657786;
-        margin: 10px 0;
-    }
+.post-page-container .date {
+  color: #657786;
+  margin: 10px 0;
+}
 
-    .post-page-container .actions {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 10px;
-        padding: 0;
-    }
+.post-page-container .actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding: 0;
+}
 
-    .post-page-container .buttons {
-        padding: 0;
-        height: 100%;
-        margin-right: 10px;
-    }
+.post-page-container .buttons {
+  padding: 0;
+  height: 100%;
+  margin-right: 10px;
+}
 
-        .post-page-container .buttons button {
-            border: none;
-            background: inherit;
-            font-size: 14px;
-            font-weight: bold;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            color: #1DA1F2;
-            padding: 0;
-            margin-left: 30px;
-        }
+.post-page-container .buttons button {
+  border: none;
+  background: inherit;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: #1DA1F2;
+  padding: 0;
+  margin-left: 30px;
+}
 
-            .post-page-container .buttons button:hover {
-                text-decoration: underline;
-                box-shadow: 0 0 5px rgba(50, 172, 248, 0.5);
-            }
+.post-page-container .buttons button:hover {
+  text-decoration: underline;
+  box-shadow: 0 0 5px rgba(50, 172, 248, 0.5);
+}
 
-    .post-page-container div[id^="comment-form-"] {
-        display: none;
-    }
+.post-page-container div[id^="comment-form-"] {
+  display: none;
+}
 
-    .post-page-container .answer {
-        padding: 10px 15px;
-        font-size: 150%;
-        border: none;
-        width: 100%;
-        resize: none;
-        outline: none;
-        background: inherit;
-        height: auto;
-        border-top-left-radius: 15px;
-        border-bottom-left-radius: 15px;
-    }
+.post-page-container .answer {
+  padding: 10px 15px;
+  font-size: 150%;
+  border: none;
+  width: 100%;
+  resize: none;
+  outline: none;
+  background: inherit;
+  height: auto;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
 
-        .post-page-container .answer:focus {
-            border: none;
-        }
+.post-page-container .answer:focus {
+  border: none;
+}
 
-        .post-page-container .answer::-webkit-scrollbar {
-            width: 10px;
-        }
+.post-page-container .answer::-webkit-scrollbar {
+  width: 10px;
+}
 
-        .post-page-container .answer::-webkit-scrollbar-track {
-            background: inherit;
-        }
+.post-page-container .answer::-webkit-scrollbar-track {
+  background: inherit;
+}
 
-        .post-page-container .answer::-webkit-scrollbar-thumb {
-            background-color: blue;
-            border-radius: 20px;
-            border: 3px solid inherit;
-        }
+.post-page-container .answer::-webkit-scrollbar-thumb {
+  background-color: blue;
+  border-radius: 20px;
+  border: 3px solid inherit;
+}
 
-    .post-page-container .input-wrapper {
-        display: flex;
-        flex-direction: row;
-        height: auto;
-        justify-content: space-between;
-        background-color: rgba(57, 228, 108, 0.2);
-        border: 1px solid slateblue;
-        border-radius: 15px;
-    }
+.post-page-container .input-wrapper {
+  display: flex;
+  flex-direction: row;
+  height: auto;
+  justify-content: space-between;
+  background-color: rgba(57, 228, 108, 0.2);
+  border: 1px solid slateblue;
+  border-radius: 15px;
+}
 
-        .post-page-container .input-wrapper button {
-            border: none;
-            background: inherit;
-            border-top-right-radius: 15px;
-            border-bottom-right-radius: 15px;
-        }
+.post-page-container .input-wrapper button {
+  border: none;
+  background: inherit;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
 
-    /*  ----------------------------------------------------    POST        ----------------------------------------------------    */
+/*  ----------------------------------------------------    POST        ----------------------------------------------------    */
 
-    .post-page-container .post-single-page {
-        margin: 0;
-        padding-bottom: 5px;
-        width: 100%;
-        background-color: rgba(216, 132, 132, 0.2);
-    }
+.post-page-container .post-single-page {
+  margin: 0;
+  padding-bottom: 5px;
+  width: 100%;
+  background-color: rgba(216, 132, 132, 0.2);
+}
 
-        .post-page-container .post-single-page .post-content {
-            padding: 10px;
-        }
+.post-page-container .post-single-page .post-content {
+  padding: 10px;
+}
 
-        .post-page-container .post-single-page .content {
-            width: 95%;
-            font-size: 200%;
-            line-height: 1.2;
-        }
+.post-page-container .post-single-page .content {
+  width: 95%;
+  font-size: 200%;
+  line-height: 1.2;
+}
 
-        .post-page-container .post-single-page .author {
-            font-size: 200%;
-            font-weight: bold;
-            margin-bottom: 10px;
-            margin-top: 5px;
-        }
+.post-page-container .post-single-page .author {
+  font-size: 200%;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
 
-        .post-page-container .post-single-page .date {
-            font-size: 20px;
-        }
+.post-page-container .post-single-page .date {
+  font-size: 20px;
+}
 
-        .post-page-container .post-single-page .buttons {
-            margin-right: 20px;
-        }
+.post-page-container .post-single-page .buttons {
+  margin-right: 20px;
+}
 
-        .post-page-container .post-single-page .input-wrapper {
-            margin: 0 5px;
-        }
-
-
-    /*  ----------------------------------------------------    COMMENTO RISPOSTA POST        ----------------------------------------------------    */
+.post-page-container .post-single-page .input-wrapper {
+  margin: 0 5px;
+}
 
 
-    .post-page-container .comments {
-        width: 90%;
-        border: 1px solid brown;
-        float: right;
-        padding-bottom: 10px;
-        display: flex;
-        flex-direction: column;
-        align-items: end;
-    }
-
-    .post-page-container .comments-thread {
-        margin: 10px 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: end;
-        width: 100%;
-    }
-
-    .post-page-container .comments .date {
-        font-size: 14px;
-    }
-
-    .post-page-container .comments .actions {
-        padding: 0;
-    }
-
-    .post-page-container .comments .answer {
-        font-size: 110%;
-    }
-
-    .post-page-container .post-first-comment {
-        background-color: rgba(71, 173, 204, 0.2);
-        padding: 4px 10px;
-        margin-bottom: 5px;
-        font-size: 120%;
-        border-radius: 7px;
-        width: 98%;
-    }
-
-    .post-page-container .post-first-comment-answer {
-        background-color: rgba(14, 121, 46, 0.2);
-        padding: 4px 10px;
-        font-size: 120%;
-        border-radius: 7px;
-        width: 90%;
-        margin-bottom: 5px;
-    }
-
-        .post-page-container .post-first-comment-answer:last-child {
-            margin-bottom: 0;
-        }
+/*  ----------------------------------------------------    COMMENTO RISPOSTA POST        ----------------------------------------------------    */
 
 
-    .post-page-container .reference {
-        margin: 5px 25px 5px 0;
-        border-bottom: 1px solid red;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
+.post-page-container .comments {
+  width: 90%;
+  border: 1px solid brown;
+  float: right;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
 
+.post-page-container .comments-thread {
+  margin: 10px 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  width: 100%;
+}
+
+.post-page-container .comments .date {
+  font-size: 14px;
+}
+
+.post-page-container .comments .actions {
+  padding: 0;
+}
+
+.post-page-container .comments .answer {
+  font-size: 110%;
+}
+
+.post-page-container .post-first-comment {
+  background-color: rgba(71, 173, 204, 0.2);
+  padding: 4px 10px;
+  margin-bottom: 5px;
+  font-size: 120%;
+  border-radius: 7px;
+  width: 98%;
+}
+
+.post-page-container .post-first-comment-answer {
+  background-color: rgba(14, 121, 46, 0.2);
+  padding: 4px 10px;
+  font-size: 120%;
+  border-radius: 7px;
+  width: 90%;
+  margin-bottom: 5px;
+}
+
+.post-page-container .post-first-comment-answer:last-child {
+  margin-bottom: 0;
+}
+
+
+.post-page-container .reference {
+  margin: 5px 25px 5px 0;
+  border-bottom: 1px solid red;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
