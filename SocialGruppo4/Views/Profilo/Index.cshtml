@@ -21,10 +21,13 @@
             <form enctype="multipart/form-data">
                 <textarea placeholder="A cosa stai pensando?"></textarea>
                 <div class="button-container">
-                    <label for="image-upload" class="image-upload-label">Carica Immagine</label>
+                    <label for="image-upload" class="image-upload-label">
+                        Carica Immagine
+                        <input type="file" accept="image/*" id="image-upload" style="display: none;" />
+                    </label>
+
                     <button type="submit">Posta</button>
                 </div>
-                <input type="file" accept="image/*" id="image-upload" />
             </form>
         </div>
     </div>
