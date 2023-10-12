@@ -122,7 +122,7 @@ namespace SocialGruppo4.Models.Post
             {
                 Post p = new();
                 p.FromDictionary(riga);
-                p.Utente = (Utente?)DAOUtenti.GetInstance().Find(p.IdUtente);
+                p.Utente = (Utente)DAOUtenti.GetInstance().Find(p.IdUtente);
                 ris.Add(p);
             }
 

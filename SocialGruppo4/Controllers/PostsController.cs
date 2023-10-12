@@ -6,9 +6,6 @@ namespace SocialGruppo4.Controllers
 {
     public class PostsController : Controller
     {
-        public IActionResult Details(int id)
-        {
-            return View(DAOPost.GetInstance().FullPost(id));
-        }
+        public IActionResult Details(int id) => View(DAOPost.GetInstance().FullPost(id));
     }
 }
