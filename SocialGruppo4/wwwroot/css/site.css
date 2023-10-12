@@ -186,12 +186,15 @@ main {
 }
 
 .tweet {
+  display: block;
   border-radius: 20px;
   padding: 1rem;
   margin-top: 30px;
   width: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   background-color: white;
+  text-decoration: none;
+  color: var(--gray-800);
 }
 
 .tweet-header {
@@ -275,6 +278,10 @@ footer {
 
 .mb-2 {
   margin-bottom: 0.5rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
 }
 
 .w-full {
@@ -364,7 +371,7 @@ footer {
 .post-form-textarea {
   width: 100%;
   padding: 1rem;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 1rem;
   font-size: 1rem;
 }
@@ -379,70 +386,6 @@ footer {
   align-items: center;
   justify-content: end;
   gap: 1rem;
-}
-
-
-/*              
-    POST (qui per poco)
-*/
-
-.post-page-container {
-  padding-right: 5px;
-}
-
-.post-single-page {
-  border-radius: 20px;
-  padding: 10px;
-  padding-right: 10px;
-  margin-bottom: 30px;
-  width: 600px;
-  border: 1px solid rgba(204, 204, 204, 0.2);
-}
-
-.post-single-page p {
-  margin: 0;
-  font-size: 18px;
-  line-height: 1.2;
-  /* margin-left: 5px; */
-}
-
-.post-single-page .author {
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.post-single-page .date {
-  font-size: 14px;
-  color: #657786;
-}
-
-.post-single-page .actions {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-  /*padding-right: 20px;*/
-}
-
-.post-single-page .actions .buttons {
-  margin-right: 15px;
-  /*padding-right: 20px;*/
-}
-
-.post-single-page .actions a {
-  color: #1DA1F2;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: bold;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-}
-
-.post-single-page .actions a:first-child {
-  margin-right: 10px;
-}
-
-.post-single-page .actions a:hover {
-  text-decoration: underline;
-  box-shadow: 0 0 5px rgba(50, 172, 248, 0.5);
 }
 
 .listazioni {
@@ -518,21 +461,31 @@ footer {
   background-color: #0056b3;
 }
 
-
-#recuperaacc {
-  font-size: 18px;
-  color: crimson;
-  background-color: ghostwhite;
-  border: none;
-  border-radius: 3px;
-  margin-left: 5px;
+.form-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: end;
 }
 
-#recuperaacc:hover {
-  color: white;
-  background-color: crimson;
+.auth-links {
+  text-align: center;
+  margin-top: 1rem;
 }
 
+.auth-links a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  margin-left: 0;
+  margin-right: 0;
+  text-decoration: none;
+  color: var(--twitter);
+  font-size: 1rem;
+}
+
+.auth-links a:hover {
+  color: var(--twitter-dark);
+  text-decoration: underline;
+}
 
 /* dropdown*/
 
@@ -615,34 +568,30 @@ footer {
 
 /* Stile per il titolo */
 h1 {
-  text-align: center;
-  color: #1da1f2;
-  /* Blu Twitter */
+  color: var(--gray-800);
 }
 
 /* Stile per la lista ul */
 ul.elenco-utenti {
   list-style-type: none;
-  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }
 
 /* Stile per gli elementi li */
 li.utente {
-  margin-bottom: 20px;
-  /* Aggiunge spazio tra gli elementi */
-  padding: 10px;
-  border: 1px solid #e1e8ed;
-  /* Blu Twitter più chiaro */
+  padding: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
   background-color: #ffffff;
-  /* Bianco */
   transition: background-color 0.3s ease;
-  /* Aggiunge una transizione durante l'hover */
+  cursor: pointer;
 }
 
 /* Stile per gli elementi li quando passano sopra */
 li.utente:hover {
   background-color: #f5f8fa;
-  /* Blu Twitter ancora più chiaro durante l'hover */
 }
 
 /* Stile per il nome dell'utente */
@@ -658,12 +607,13 @@ div.email {
   /* Nero */
 }
 
-
 /*
 
-    ------------------------------------------------------------        PAGINA POST      ------------------------------------------------------------
+     -------------------------------------------------------------------------------------      PAGINA POST        -------------------------------------------------------------------------------------
 
 */
+
+/*  ----------------------------------------------------    GENERALE        ----------------------------------------------------    */
 
 .post-page-container {
   padding: 0;
@@ -676,40 +626,25 @@ div.email {
   align-items: end;
 }
 
-.post-page-container .post-single-page {
-  margin: 0;
-  width: 100%;
-  background-color: rgba(216, 132, 132, 0.2);
-}
-
 .post-page-container .post-content {
   width: 100%;
   padding: 5px;
 }
 
-.post-page-container .post-single-page .content {
-  width: 95%;
-  font-size: 200%;
+.post-page-container .author {
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 7.5px 0;
+}
+
+.post-page-container .content {
+  margin: 0;
   line-height: 1.2;
 }
 
-.post-page-container .post-single-page .post-content {
-  padding: 10px;
-}
-
-.post-page-container .post-single-page .author {
-  font-size: 150%;
-  font-weight: bold;
-  margin-bottom: 10px;
-  margin-top: 5px;
-}
-
-.post-page-container .post-single-page .date {
-  font-size: 20px;
-}
-
-.post-page-container .post-single-page .buttons {
-  margin-right: 20px;
+.post-page-container .date {
+  color: #657786;
+  margin: 10px 0;
 }
 
 .post-page-container .actions {
@@ -726,22 +661,145 @@ div.email {
   margin-right: 10px;
 }
 
-.post-page-container .buttons a {
-  margin-left: 30px;
-  color: #1DA1F2;
-  text-decoration: none;
+.post-page-container .buttons button {
+  border: none;
+  background: inherit;
   font-size: 14px;
   font-weight: bold;
   font-family: Georgia, 'Times New Roman', Times, serif;
+  color: #1DA1F2;
+  padding: 0;
+  margin-left: 30px;
 }
 
-.post-page-container .buttons a:last-child {
-  margin-right: 10px;
-}
-
-.post-page-container .buttons a:hover {
+.post-page-container .buttons button:hover {
   text-decoration: underline;
   box-shadow: 0 0 5px rgba(50, 172, 248, 0.5);
+}
+
+.post-page-container div[id^="comment-form-"] {
+  display: none;
+}
+
+.post-page-container .answer {
+  padding: 10px 15px;
+  font-size: 150%;
+  border: none;
+  width: 100%;
+  resize: none;
+  outline: none;
+  background: inherit;
+  height: auto;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.post-page-container .answer:focus {
+  border: none;
+}
+
+.post-page-container .answer::-webkit-scrollbar {
+  width: 10px;
+}
+
+.post-page-container .answer::-webkit-scrollbar-track {
+  background: inherit;
+}
+
+.post-page-container .answer::-webkit-scrollbar-thumb {
+  background-color: blue;
+  border-radius: 20px;
+  border: 3px solid inherit;
+}
+
+.post-page-container .input-wrapper {
+  display: flex;
+  flex-direction: row;
+  height: auto;
+  justify-content: space-between;
+  background-color: rgba(57, 228, 108, 0.2);
+  border: 1px solid slateblue;
+  border-radius: 15px;
+}
+
+.post-page-container .input-wrapper button {
+  border: none;
+  background: inherit;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+/*  ----------------------------------------------------    POST        ----------------------------------------------------    */
+
+.post-page-container .post-single-page {
+  margin: 0;
+  padding-bottom: 5px;
+  width: 100%;
+  background-color: rgba(216, 132, 132, 0.2);
+}
+
+.post-page-container .post-single-page .post-content {
+  padding: 10px;
+}
+
+.post-page-container .post-single-page .content {
+  width: 95%;
+  font-size: 200%;
+  line-height: 1.2;
+}
+
+.post-page-container .post-single-page .author {
+  font-size: 200%;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.post-page-container .post-single-page .date {
+  font-size: 20px;
+}
+
+.post-page-container .post-single-page .buttons {
+  margin-right: 20px;
+}
+
+.post-page-container .post-single-page .input-wrapper {
+  margin: 0 5px;
+}
+
+
+/*  ----------------------------------------------------    COMMENTO RISPOSTA POST        ----------------------------------------------------    */
+
+
+.post-page-container .comments {
+  width: 90%;
+  border: 1px solid brown;
+  float: right;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.post-page-container .comments-thread {
+  margin: 10px 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  width: 100%;
+}
+
+.post-page-container .comments .date {
+  font-size: 14px;
+}
+
+.post-page-container .comments .actions {
+  padding: 0;
+}
+
+.post-page-container .comments .answer {
+  font-size: 110%;
 }
 
 .post-page-container .post-first-comment {
@@ -766,48 +824,6 @@ div.email {
   margin-bottom: 0;
 }
 
-.post-page-container .author {
-  font-weight: bold;
-  text-transform: uppercase;
-  margin: 7.5px 0;
-}
-
-.post-page-container .content {
-  margin: 0;
-  line-height: 1.2;
-}
-
-.post-page-container .date {
-  color: #657786;
-  margin: 10px 0;
-}
-
-.post-page-container .comments {
-  width: 90%;
-  border: 1px solid brown;
-  float: right;
-  padding-bottom: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: end;
-}
-
-.post-page-container .comments-thread {
-  margin-top: 15px;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: end;
-  width: 100%;
-}
-
-.post-page-container .comments .date {
-  font-size: 14px;
-}
-
-.post-page-container .comments .actions {
-  padding: 0;
-}
 
 .post-page-container .reference {
   margin: 5px 25px 5px 0;
@@ -821,17 +837,6 @@ div.email {
     ----------------------------------------------PAGINA PROFILO--------------------------------------------                                      
 */
 
-/* Stile per il body */
-.bodyprofilo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
-  /* Colore di sfondo */
-}
 
 /* Stile per il container */
 .containerprofilo {
