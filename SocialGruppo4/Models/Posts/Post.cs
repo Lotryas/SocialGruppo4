@@ -12,7 +12,7 @@ namespace SocialGruppo4.Models.Post
         public int MiPiace { get; set; }
         public string? Immagine { get; set; }
 
-        public Utente Utente { get; set; }
+        public Utente? Utente { get; set; }
 
         public Post() { }
 
