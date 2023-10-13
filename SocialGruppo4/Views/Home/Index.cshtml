@@ -32,7 +32,7 @@
             {
                 <a asp-action="Details" asp-controller="Posts" asp-route-id="@post.Id" class="tweet">
                     <div class="tweet-header">
-                        <a class="author" href="/Posts/Details/@(@post.Id)">@post.Utente?.Nominativo</a>
+                        <p class="author">@post.Utente?.Nominativo</p>
                         <p class="date">@post.DataEora.ToString("d/M/yyyy HH:mm")</p>
                     </div>
                     @if (@post.Immagine is not null && @post.Immagine != string.Empty)

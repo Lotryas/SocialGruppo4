@@ -9,12 +9,12 @@ namespace SocialGruppo4.Controllers
     public class PostsController : Controller
     {
         [HttpGet("Posts/Details/{id}")]
-        public IActionResult Details(int id) 
+        public IActionResult Details(int id)
         {
             Console.WriteLine(id);
             Entity? utente = (Entity?)HttpContext.Items["User"];
 
-            if(utente != null) 
+            if (utente != null)
                 ViewBag.Likes = DAOLikes.GetInstance().ReadUserLikedPosts(utente.Id);
 
             ViewBag.Commenti = DAOPost.GetInstance().FullPost(id);
