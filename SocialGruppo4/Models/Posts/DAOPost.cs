@@ -93,6 +93,26 @@ namespace SocialGruppo4.Models.Post
             return ris;
         }
 
+        public List<Entity> MyLatest(int id)
+        {
+            List<Entity> ris = new();
+
+            List<Dictionary<string, string>> righe = db.Read(@$"
+                SELECT * FROM Posts
+                WHERE idUtente = {id}
+                ORDER BY id DESC;
+            ");
+
+            foreach (Dictionary<string, string> riga in righe)
+            {
+                Post p = new();
+                p.FromDictionary(riga);
+                ris.Add(p);
+            }
+
+            return ris;
+        }
+
         public List<Entity> LatestFollowing(int idUtente)
         {
             List<Entity> ris = new();

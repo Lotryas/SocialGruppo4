@@ -276,6 +276,10 @@ footer {
   margin-top: 1rem;
 }
 
+.-mb-3 {
+  margin-bottom: -0.75rem;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -286,6 +290,14 @@ footer {
 
 .w-full {
   width: 100%;
+}
+
+.w-6 {
+  width: 1.5rem;
+}
+
+.h-6 {
+  height: 1.5rem;
 }
 
 .red-600 {
@@ -837,13 +849,25 @@ div.email {
     ----------------------------------------------PAGINA PROFILO--------------------------------------------                                      
 */
 
+.profile-data {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 1rem;
+}
+
+.profile-data-item {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
 
 /* Stile per il container */
 .containerprofilo {
   width: 100%;
-  max-width: 800px;
-  /* Larghezza massima del contenuto */
-  padding: 20px;
+  padding: 1rem;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
 }
 
 /* Stile per l'header del profilo */
@@ -868,52 +892,4 @@ div.email {
 /* Stile per la sezione della biografia */
 .biography p {
   font-size: 18px;
-  margin: 0;
-  margin-bottom: 10px;
-}
-
-/* Stile per la sezione di composizione del tweet */
-.tweet-compose textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 1rem;
-  font-size: 18px;
-  box-sizing: border-box;
-  margin-bottom: 10px;
-  resize: none;
-}
-
-.tweet-compose .image-upload-label {
-    background-color: #1DA1F2;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 9999px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    border: none;
-    outline: none;
-}
-
-.tweet-compose .image-upload-label:hover {
-  background-color: #007bff;
-}
-
-.tweet-compose button {
-    background-color: #1DA1F2;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 9999px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    border: none; 
-    outline: none; 
-}
-
-.tweet-compose button:hover {
-  background-color: #007bff;
 }
