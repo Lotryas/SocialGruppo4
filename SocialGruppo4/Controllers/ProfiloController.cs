@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SocialGruppo4.Models.Utenti;
 
 namespace SocialGruppo4.Controllers
 {
@@ -6,12 +7,13 @@ namespace SocialGruppo4.Controllers
     {
         public IActionResult Index()
         {
-            if (HttpContext.Items["User"] is null)
+            Utente? utente = (Utente?)HttpContext.Items["User"];
+            if (utente is null)
             {
-                return RedirectToAction("Index","Auth");
+                return RedirectToAction("Index", "Auth");
             }
 
-            return View();
+            return View(utente);
         }
     }
 }
