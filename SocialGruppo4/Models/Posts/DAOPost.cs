@@ -8,30 +8,17 @@ namespace SocialGruppo4.Models.Post
         private readonly Database db;
         private static DAOPost instance = null!;
 
-        private DAOPost()
-        {
-            db = new Database(Config.ConnectionString.Value);
-        }
+        private DAOPost() => db = new Database(Config.ConnectionString.Value);
 
-        public static DAOPost GetInstance()
-        {
-            return instance ??= new DAOPost();
-        }
+        public static DAOPost GetInstance() => instance ??= new DAOPost();
 
-        public bool Delete(int id)
-        {
-            return db.Update($"delete from Posts where id = {id};");
-        }
+        public bool Delete(int id) => db.Update($"DELETE from Posts where id = {id};");
 
         public Entity Find(int id)
         {
             foreach (Entity e in Read())
-            {
                 if (e.Id == id)
-                {
                     return e;
-                };
-            }
 
             return null!;
         }
@@ -39,7 +26,9 @@ namespace SocialGruppo4.Models.Post
         public bool Insert(Entity e)
         {
             Post p = (Post)e;
+
             string idPadre = p.IdPadre?.ToString() ?? "NULL";
+
             return db.Update(@$"
                 INSERT INTO Posts (idUtente, idPadre, contenuto, dataEora, miPiace, immagine)
                 VALUES (
@@ -63,6 +52,7 @@ namespace SocialGruppo4.Models.Post
             {
                 Post p = new();
                 p.FromDictionary(riga);
+                p.Utente = (Utente?)DAOUtenti.GetInstance().Find(p.IdUtente);
                 ris.Add(p);
             }
 
@@ -131,14 +121,9 @@ namespace SocialGruppo4.Models.Post
 
         public List<List<Entity>> FullPost(int id)
         {
-            List<Entity> postOriginale = new() { Find(id) };
-
-            //{ postOriginale, threadCommenti<commento-risposte>, threadCommenti<commento-risposte>....}
-            List<List<Entity>> ris = new() { postOriginale };
+            List<List<Entity>> ris = new();
 
             List<Entity> threadCommenti = new();
-
-
             List<int> idRispostaPost = new();
 
             foreach (Entity e in Read())

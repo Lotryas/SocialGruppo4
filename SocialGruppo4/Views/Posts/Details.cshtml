@@ -1,11 +1,9 @@
 ﻿@using SocialGruppo4.Models
 @using SocialGruppo4.Models.Post;
 @using Utility;
-@model List<List<Utility.Entity>>;
+@model Post;
 @{
-    //string postAuthor = ((Post)Model[0][0]).Utente.Nominativo;
-
-    ViewData["Title"] = $"Post di ";
+    //ViewData["Title"] = $"Post di {Model.Contenuto.Substring(0, 10)}...";
 }
 
 <!-- 
@@ -16,69 +14,66 @@
 
 <section class="post-page-container">
     <!-- POST -->
-    @foreach(var p in Model[0])
-    {
-        <div class="post-single-page">
-            <div class="post-content">
-                <!-- nome utente (con link al profilo) -->
-                <p class="author">@*@(((Post)p).Utente.Nominativo)*@  dd</p>
-                <!-- contenuto post -->
-                <p class="content">@(((Post)p).Contenuto)</p>
+    <div class="post-single-page">
+        <div class="post-content">
+            <!-- nome utente (con link al profilo) -->
+            <p class="author">@(Model.Utente.Nominativo)</p>
+            <!-- contenuto post -->
+            <p class="content">@(Model.Contenuto)</p>
 
-                <div class="actions">
-                    <div>
-                        <!-- data post-->
-                        <p class="date">@(((Post)p).DataEora.ToString("h:mm tt - d MMM yyyy"))</p>
+            <div class="actions">
+                <div>
+                    <!-- data post-->
+                    <p class="date">@(Model.DataEora.ToString("h:mm tt - d MMM yyyy"))</p>
+                </div>
+                <div class="buttons">
+                    <button onclick="answerFormToggler(@(Model.Id))">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                        </svg>
+                    </button>
+                    @{
+                        var isLiked = ViewBag.Likes.Contains(Model.Id);
+                    }
+                    <div class="like-btn">
+                        <form asp-action="ToggleLike" asp-route-id="@(Model.Id)" method="post">
+                            <button type="submit" onmouseenter="fillLike(event, '@isLiked')"
+                                    onmouseleave="unFillLike(event, '@isLiked')"
+                                    class="@(isLiked ? "like-full" : "like-empty")">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5"
+                                        stroke="currentColor" width="24" height="24"
+                                        fill="@(isLiked ? "currentColor" : "none")">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                                </svg>
+                            </button>
+                        </form>
+                        <small>@(Model.MiPiace)</small>
                     </div>
-                    <div class="buttons">
-                        <button onclick="answerFormToggler(@(((Post)p).Id))">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-                            </svg>
-                        </button>
-                        @{
-                            var isLiked = ViewBag.Likes.Contains(((Post)p).Id);
-                        }
-                        <div class="like-btn">
-                            <form asp-action="ToggleLike" asp-route-id="@(((Post)p).Id)" method="post">
-                                <button type="submit" onmouseenter="fillLike(event, '@isLiked')"
-                                        onmouseleave="unFillLike(event, '@isLiked')"
-                                        class="@(isLiked ? "like-full" : "like-empty")">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5"
-                                         stroke="currentColor" width="24" height="24"
-                                         fill="@(isLiked ? "currentColor" : "none")">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                              d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-                                    </svg>
-                                </button>
-                            </form>
-                            <small>@(((Post)p).MiPiace)</small>
-                        </div>
-                    </div><!-- .buttons -->
-                </div><!-- .actions -->
-            </div> <!-- .post-content -->
+                </div><!-- .buttons -->
+            </div><!-- .actions -->
+        </div> <!-- .post-content -->
             
-            <!-- inserire id commento padre nell'id, per mostrare soltanto il  -->
-            <div class="comment-form" id="comment-form-@(((Post)p).Id)">
-                <form action="#" method="POST">
-                    <div class="input-wrapper">
-                        <textarea class="answer" name="risposta" rows="2" placeholder="Rispondi a @*@(((post)p).utente.nominativo)*@"></textarea>
-                        <!-- cercare icona da sostituire -->
-                        <button type="submit">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-                            </svg>
-                        </button>
-                    </div>
-                </form>
-            </div><!-- .comment-form -->
-        </div> <!-- .post-single-page -->
-    }
+        <!-- inserire id commento padre nell'id, per mostrare soltanto il  -->
+        <div class="comment-form" id="comment-form-@(Model.Id)">
+            <form action="#" method="POST">
+                <div class="input-wrapper">
+                    <textarea class="answer" name="risposta" rows="2" placeholder="Rispondi a @(Model.Utente.Nominativo)"></textarea>
+                    <!-- cercare icona da sostituire -->
+                    <button type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </div><!-- .comment-form -->
+    </div> <!-- .post-single-page -->
 
-    @for(int i = 1; i < Model.Count; i++)
+    @foreach(Post p in ViewBag.Commenti)
     {
         <div class="comments">
-        @for(int j = 0; j < Model[i].Count; j++)
+        @for (int j = 0; j < ViewBag.Commenti.Count; j++)
         {
             <!-- DIV CHE RACCHIUDE COMMENTI E RISPOSTE CHE SI CREANO SOTTO -->
             <div class="comments-thread">
@@ -86,50 +81,50 @@
                 
                     <div class="post-content">
                     @if(j > 0)
-                    {       
-                        <div class="reference"><span>@*@(((Post)Model[i][j]).Utente.Nominativo)*@</span>: </div>
+                    {
+                        <div class="reference"><span>@(p.Utente.Nominativo)</span>: @(p.Utente.Nominativo)</div>
                     }
                         <!-- nome utente (con link al profilo) -->
-                        <p class="author">@*@(((Post)Model[i][j]).Utente.Nominativo)*@</p>
+                        <p class="author">@(p.Utente.Nominativo)</p>
                         <!-- contenuto post -->
-                        <p class="content">@(((Post)Model[i][j]).Contenuto)</p>
+                        <p class="content">@(p.Contenuto)</p>
 
                         <div class="actions">
                             <div>
                                 <!-- data post-->
-                                <p class="date">@(((Post)Model[i][j]).DataEora.ToString("h:mm tt - d MMM yyyy"))</p>
+                                <p class="date">@(p.DataEora.ToString("h:mm tt - d MMM yyyy"))</p>
                             </div>
                             <div class="buttons">
-                                <button onclick="answerFormToggler(@(((Post)Model[i][j]).Id))">
+                                <button onclick="answerFormToggler(@(p.Id))">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
                                     </svg>
                                 </button>
                                 @{
-                                        var isLiked = ViewBag.Likes.Contains(((Post)Model[i][j]).Id);
+                                    var isLikedComment = ViewBag.Likes.Contains(p.Id);
                                 }
                                 <div class="like-btn">
-                                    <form asp-action="ToggleLike" asp-route-id="@(((Post)Model[i][j]).Id)" method="post">
-                                        <button type="submit" onmouseenter="fillLike(event, '@isLiked')"
-                                                onmouseleave="unFillLike(event, '@isLiked')"
-                                                class="@(isLiked ? "like-full" : "like-empty")">
+                                    <form asp-action="ToggleLike" asp-route-id="@(p.Id)" method="post">
+                                        <button type="submit" onmouseenter="fillLike(event, '@isLikedComment')"
+                                                onmouseleave="unFillLike(event, '@isLikedComment')"
+                                                class="@(isLikedComment ? "like-full" : "like-empty")">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5"
                                                     stroke="currentColor" width="24" height="24"
-                                                    fill="@(isLiked ? "currentColor" : "none")">
+                                                    fill="@(isLikedComment ? "currentColor" : "none")">
                                                 <path stroke-linecap="round" stroke-linejoin="round"
                                                         d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
                                             </svg>
                                         </button>
                                     </form>
-                                    <small>@(((Post)Model[i][j]).MiPiace)</small>
+                                    <small>@(p.MiPiace)</small>
                                 </div>
                             </div><!-- .buttons -->
                         </div><!-- .actions -->
 
-                        <div class="comment-form" id="comment-form-@(((Post)Model[i][j]).Id)">
+                        <div class="comment-form" id="comment-form-@(p.Id)">
                             <form action="#" method="POST">
                                 <div class="input-wrapper">
-                                    <textarea class="answer" name="risposta" rows="2" placeholder="Rispondi a (((Post)Model[i][j]).Utente.Nominativo)"></textarea>
+                                    <textarea class="answer" name="risposta" rows="2" placeholder="Rispondi a @(p.Utente.Nominativo)"></textarea>
                                     <!-- cercare icona da sostituire -->
                                     <button type="submit">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

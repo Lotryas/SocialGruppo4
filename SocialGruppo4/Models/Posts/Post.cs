@@ -12,14 +12,14 @@ namespace SocialGruppo4.Models.Post
         public int MiPiace { get; set; }
         public string? Immagine { get; set; }
 
-        public Utente Utente { get; set; }
+        public Utente? Utente { get; set; }
 
         public Post() { }
 
         public Post(
             int id, int idUtente, int idPadre, string contenuto,
             DateTime dataEora, int miPiace, string immagine,
-            Utente utente
+            Utente? utente
         ) : base(id)
         {
             IdUtente = idUtente;
